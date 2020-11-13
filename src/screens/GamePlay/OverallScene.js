@@ -1,22 +1,47 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import { themes } from "../../constants/Colors"
+import { Animations } from "../../constants/Animations"
+import Cloakroom from "./Cloakroom";
+import Overlay from "./Overlay";
 
 export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      scenes: {
+        cloakroom: false
+      }
     }
   }
 
+  closeAll = () => {
+    this.setState({ scenes: { cloakroom: false }})
+    setTimeout(() => {
+      this.setState({ overlay: false })
+    }, Animations.duration)
+  }
+
+  openScene = name => {
+    this.setState({ overlay: true })
+    setTimeout(() => {
+      this.setState({ scenes: { [name]: true } })
+    }, Animations.duration)
+  }
+
   render() {
+    const { scenes, overlay } = this.state
+
     return (
       <Container
         style={{ backgroundColor: themes.dark.allBackground }}
       >
+        <pre>{JSON.stringify(this.state)}</pre>
         <Main
           style={{ backgroundColor: themes.dark.Background1 }}
         ></Main>
+        <Cloakroom isOpen={scenes.cloakroom} onOpen={() => this.openScene('cloakroom')}/>
+        <Overlay isOpen={overlay} onClose={this.closeAll} />
       </Container>
     );
   }

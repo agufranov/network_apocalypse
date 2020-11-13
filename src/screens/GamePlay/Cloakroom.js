@@ -1,40 +1,39 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import {themes} from "../constants/Colors"
+import { themes } from "../../constants/Colors"
 
-export default class Cloakroom extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-    }
-  }
-
-  render() {
-    return (
-      <Container
-        style={{ backgroundColor: themes.dark.allBackground }}
-      >
-        <Main></Main>
-      </Container>
-    );
-  }
+const Cloakroom = ({
+  isOpen,
+  onOpen
+}) => {
+  return (
+    <>
+      <Button onClick={onOpen} />
+      <Box isOpen={isOpen}/>
+    </>
+  )
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: scroll;
-  height: 100vh;
-  width: 100vw;
+const Button = styled.div`
+  width: 50px;
+  height: 50px;
+  right: 25%;
+  bottom: 25%;
+  background-color: red;
+  position: absolute;
 `;
 
-const Main = styled.div`
-  display: flex;
-  background-color: #E6E6E6;
-  flex-direction: column;
-  justify-content: center;
-  overflow: scroll;
-  height: 100vh;
-  width: 100vh;
+const Box = styled.div`
+  width: ${props => props.isOpen ? '25%' : '50px'};
+  height: ${props => props.isOpen ? '50%' : '50px'};
+  right: ${props => props.isOpen ? '30%' : '25%'};
+  bottom: ${props => props.isOpen ? 0 : '25%'};
+  background-color: brown;
+  position: absolute;
+  opacity: ${props => props.isOpen ? 1 : 0};
+  pointer-events: ${props => props.isOpen ? 'all' : 'none'};
+  z-index: 20;
+  transition: all ease 0.3s;
 `;
+
+export default Cloakroom;

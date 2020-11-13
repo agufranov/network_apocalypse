@@ -17,7 +17,7 @@ class App extends React.Component {
       route: this.route(),
       token: '',
       menuOpenStatus: 0,
-      menuOpenStatusToggle: this.menuOpenStatusToggle()
+      menuOpenStatusToggle: this.menuOpenStatusToggle(),
     }
   }
 
