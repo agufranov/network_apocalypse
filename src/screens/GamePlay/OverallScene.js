@@ -7,7 +7,7 @@ import Cloakroom from "./Cloakroom";
 import Notebook from "./Notebook";
 import Commutator from "./Commutator";
 import PromoText from "./PromoText";
-import OveralSceneSVG from "../../assets/images/1locationapoatom-01"
+import OveralSceneSVG from "../../assets/images/location1-01"
 import {lay} from "../../constants/Layout"
 
 const ALL_DRESSES = ['hat', 'shoes']
