@@ -24,13 +24,18 @@ class Header extends React.Component {
  
 
   render(){
-    let w = this.state.open ? 0 : 180
+    let w = this.state.open ?  180 : 0
   return (
-    <div>
+    <div
+      style={{
+        position: "fixed",
+        zIndex: 100,
+        right: 0
+      }}>
       <div className="burgerButton"
       onClick={()=>{
         this.setState({open: !this.state.open})
-        this.props.menuOpenStatusToggle(w)
+        //this.props.menuOpenStatusToggle(w)
         }}
       >
         <div className="centerized" data-open={this.state.open+''}>
@@ -41,10 +46,10 @@ class Header extends React.Component {
       </div>
     <Container
       className= 'headerContainer'
-      style={{
+        style={{
           position: "absolute",
           zIndex: 100,
-          width: this.props.menuOpenStatus,
+          width: w,
         }}>
       <HeadButtonHome
           className='HeadButton'
@@ -52,7 +57,9 @@ class Header extends React.Component {
           onMouseLeave={() => { this.setState({ txtColor1: '#d4e4d4' }) }}
           onClick={() => { this.props.route('OverallScene')}}
         >
-          <MenuHomeTxt style={{ color: this.state.txtColor1 }}>Игра</MenuHomeTxt>
+          <MenuHomeTxt style={{ 
+            color: this.state.txtColor1,
+             }}>Игра</MenuHomeTxt>
 
       </HeadButtonHome>
       <HeadButtonHome 

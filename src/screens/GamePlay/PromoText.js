@@ -104,8 +104,9 @@ const Text = styled.p`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-wrap: wrap;
-  padding: 25%;
+  padding: 15%;
   font-size: 20px;
   transition: 1s;
 `;

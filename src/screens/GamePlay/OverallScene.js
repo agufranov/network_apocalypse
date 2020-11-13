@@ -7,6 +7,7 @@ import Cloakroom from "./Cloakroom";
 import Notebook from "./Notebook";
 import Commutator from "./Commutator";
 import PromoText from "./PromoText";
+import {lay} from "../../constants/Layout"
 
 const ALL_DRESSES = ['hat', 'shoes']
 
@@ -91,30 +92,40 @@ export default class OverallScene extends React.Component {
 
     return (
       <Container
-        style={{ backgroundColor: themes.dark.allBackground }}
+        style={{ 
+          backgroundColor: themes.dark.allBackground,
+         
+        //height: lay.window.height,
+        //width: lay.window.height,
+             }}
       >
         {isStart && <PromoText endStart={() => this.endStart()}/>}
-        <pre>{JSON.stringify(this.state)}</pre>
+        {/* <pre>{JSON.stringify(this.state)}</pre> */}
         <Main
-          style={{ backgroundColor: themes.dark.Background1 }}
-        ></Main>
-        <Cloakroom
-          isOpen={scenes.cloakroom}
-          onOpen={() => this.openScene('cloakroom')}
-          allDresses={ALL_DRESSES}
-          onDressToggle={this.toggleDress}
-          selectedDresses={selectedDresses}
-          onCommutatorClick={this.onCommutatorClick}
-        />
-        {this.isDressed() &&
-          <Notebook
-            isOpen={scenes.notebook}
-            onOpen={this.openNotebook}
-            isWorking={isCommutatorActivated}
+          style={{
+              backgroundColor: themes.dark.Background1,
+              height: lay.window.height,
+              width: lay.window.height,
+             }}
+        >
+          <Cloakroom
+            isOpen={scenes.cloakroom}
+            onOpen={() => this.openScene('cloakroom')}
+            allDresses={ALL_DRESSES}
+            onDressToggle={this.toggleDress}
+            selectedDresses={selectedDresses}
+            onCommutatorClick={this.onCommutatorClick}
           />
-        }
-        <Commutator isOpen={scenes.commutator} />
-        <Overlay isOpen={overlay} onClose={this.closeAll} />
+          {this.isDressed() &&
+            <Notebook
+              isOpen={scenes.notebook}
+              onOpen={this.openNotebook}
+              isWorking={isCommutatorActivated}
+            />
+          }
+          <Commutator isOpen={scenes.commutator} />
+          <Overlay isOpen={overlay} onClose={this.closeAll} />
+        </Main>
       </Container>
     );
   }
@@ -123,21 +134,20 @@ export default class OverallScene extends React.Component {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
 `;
 
 
 const Main = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
-  overflow: scroll;
-  height: 100vh;
-  width: 100vh;
   box-shadow: inset 0 0 20px 4px black;
 `;
 

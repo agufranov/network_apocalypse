@@ -345,6 +345,7 @@ transition: 2s;
     width: 180px;
     height: 100vh;
     transition: 1s;
+    overflow: hidden;
   }
   .landingTitleText{
     font-size: 22px;
