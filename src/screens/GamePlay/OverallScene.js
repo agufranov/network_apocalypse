@@ -16,18 +16,33 @@ export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isStart: true,
-      overlay: false,
+      // isStart: true,
+      isStart: false,
+      // overlay: false,
+      overlay: true,
       scenes: {
         cloakroom: false,
-        notebook: false,
-        commutator: false
+        // notebook: false,
+        notebook: true,
+        // commutator: false
+        commutator: true
       },
+      // selectedDresses: {},
       selectedDresses: {
+        hat: true,
+        shoes: true
       },
-      isNotebookOnceOpened: false,
-      isCommutatorActivated: false,
+      // isNotebookOnceOpened: false,
+      isNotebookOnceOpened: true,
+      // isCommutatorActivated: false,
+      // isCommutatorActivated: false,
+      isCommutatorActivated: true,
     }
+  }
+
+  containerRef = (el) => {
+    console.log(el)
+    el.scrollTo((lay.window.height - window.innerWidth) / 4, 0)
   }
 
   endStart=()=>{
@@ -62,14 +77,16 @@ export default class OverallScene extends React.Component {
   openNotebook = () => {
     this.openScene('notebook')
     this.setState({ isNotebookOnceOpened: true })
+    if (this.state.isCommutatorActivated) {
+      this.openScene('commutator')
+    }
   }
 
   onCommutatorClick = async () => {
     if (this.state.isNotebookOnceOpened) {
       this.setState({ isCommutatorActivated: true })
       await this.closeAll()
-      this.openScene('commutator')
-      this.openScene('notebook')
+      this.openNotebook()
     }
   }
 
@@ -93,6 +110,7 @@ export default class OverallScene extends React.Component {
 
     return (
       <Container
+        ref={this.containerRef}
         style={{ 
           backgroundColor: themes.dark.allBackground,
          
@@ -101,7 +119,6 @@ export default class OverallScene extends React.Component {
              }}
       >
         {isStart && <PromoText endStart={() => this.endStart()}/>}
-        {/* <pre>{JSON.stringify(this.state)}</pre> */}
         <Main
           style={{
               backgroundColor: themes.dark.Background1,
