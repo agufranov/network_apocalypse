@@ -1,9 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" baseProfile="tiny" id="Слой_8"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 2834.6 2834.6"
-	 xml:space="preserve">
-<image width="3345" height="3287" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAADREAAAzXCAYAAADw6J0gAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+import React, { Component } from "react";
+
+export default class OveralSceneSVG extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { }
+    }
+
+render(){
+    return(    
+        <div style={{padding: 0, marginTop: 0, marginLeft: 0, height: "100%", weight: "100%"}}>	
+<svg version="1.1" baseProfile="tiny" id="Слой_8"  x="0px" y="0px" viewBox="0 0 2834.6 2834.6">
+<image width="3345" height="3287" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAADREAAAzXCAYAAADw6J0gAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAHAb1JREFUeNrs3UFqG1cYwHHbGJ+g
 hUALOUMWuoTPkIUN7d6gpUALgZYD2rdgL3wGX0KLnCHQQqA9gTcur0FBmWikGWnmzXtPvx+IxLY8
 8/RJkE3+fBcXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -8370,5 +8377,8 @@ TkSuQmCC" transform="matrix(1 0 0 1 -226 -247)">
 	<polygon fill="#C7A331" points="1091,935.8 1093.5,935.1 1088.7,935.9 	"/>
 	<path fill="#C7A331" d="M967.3,934.9c1.2,0.4,2.5,0.8,3.8,1.3c1.3,0.4,2.7,0.8,4,1.2c1.4,0.4,2.7,0.8,4,1.1c1.3,0.3,2.6,0.7,3.9,1
 		C972.1,936.8,966.2,933.7,967.3,934.9z"/>
-</g>
-</svg>
+	</g>
+				</svg>
+	</div>)
+	}
+}
