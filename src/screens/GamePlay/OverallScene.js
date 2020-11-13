@@ -15,7 +15,9 @@ export default class OverallScene extends React.Component {
     this.state = {
       overlay: true,
       scenes: {
-        cloakroom: true
+        cloakroom: false,
+        notebook: false,
+        commutator: false
       },
       selectedDresses: {
       },
