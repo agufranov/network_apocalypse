@@ -6,6 +6,7 @@ import Overlay from "./Overlay";
 import Cloakroom from "./Cloakroom";
 import Notebook from "./Notebook";
 import Commutator from "./Commutator";
+import PromoText from "./PromoText";
 
 const ALL_DRESSES = ['hat', 'shoes']
 
@@ -13,7 +14,8 @@ export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      overlay: true,
+      isStart: true,
+      overlay: false,
       scenes: {
         cloakroom: false,
         notebook: false,
@@ -22,8 +24,12 @@ export default class OverallScene extends React.Component {
       selectedDresses: {
       },
       isNotebookOnceOpened: false,
-      isCommutatorActivated: false
+      isCommutatorActivated: false,
     }
+  }
+
+  endStart=()=>{
+    this.setState({isStart: false})
   }
 
   toggleOverlay = (isOpened) => new Promise((resolve, reject) => {
@@ -79,13 +85,15 @@ export default class OverallScene extends React.Component {
       scenes,
       overlay,
       selectedDresses,
-      isCommutatorActivated
+      isCommutatorActivated,
+      isStart
     } = this.state
 
     return (
       <Container
         style={{ backgroundColor: themes.dark.allBackground }}
       >
+        {isStart && <PromoText endStart={() => this.endStart()}/>}
         <pre>{JSON.stringify(this.state)}</pre>
         <Main
           style={{ backgroundColor: themes.dark.Background1 }}
