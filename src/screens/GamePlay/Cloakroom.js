@@ -4,12 +4,22 @@ import { themes } from "../../constants/Colors"
 
 const Cloakroom = ({
   isOpen,
-  onOpen
+  onOpen,
+  allDresses,
+  onDressToggle,
+  selectedDresses,
+  onCommutatorClick
 }) => {
   return (
     <>
       <Button onClick={onOpen} />
-      <Box isOpen={isOpen}/>
+      <Box isOpen={isOpen}>
+        {allDresses.map(dress =>  {
+          const DressComponent = dresses[dress];
+          return <DressComponent key={dress} onClick={() => onDressToggle(dress)} isSelected={selectedDresses[dress]} />
+        })}
+        <Commutator onClick={onCommutatorClick} />
+      </Box>
     </>
   )
 }
@@ -21,7 +31,7 @@ const Button = styled.div`
   bottom: 25%;
   background-color: red;
   position: absolute;
-`;
+`
 
 const Box = styled.div`
   width: ${props => props.isOpen ? '25%' : '50px'};
@@ -34,6 +44,42 @@ const Box = styled.div`
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
   z-index: 20;
   transition: all ease 0.3s;
-`;
+`
+
+const Commutator = styled.div`
+  width: 100px;
+  height: 15px;
+  left: 40px;
+  bottom: 50px;
+  background-color: white;
+  border: 1px solid white;
+  position: absolute;
+  transition: all ease 0.3s;
+`
+
+const dresses = {
+  hat: styled.div`
+    width: 20px;
+    height: 20px;
+    background: blue;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: ${props => props.isSelected ? '3px solid yellow' : 'none'};
+    box-sizing: border-box;
+  `,
+  shoes: styled.div`
+    width: 20px;
+    height: 20px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    border: ${props => props.isSelected ? '3px solid yellow' : 'none'};
+    box-sizing: border-box;
+  `
+}
 
 export default Cloakroom;
