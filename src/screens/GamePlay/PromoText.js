@@ -98,6 +98,7 @@ const Container = styled.div`
   width: 100%;
   transition: 1s;
   position: absolute;
+  z-index: 200;
 `;
 const Text = styled.p`
   display: flex;

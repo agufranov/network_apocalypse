@@ -106,6 +106,8 @@ export default class OverallScene extends React.Component {
               backgroundColor: themes.dark.Background1,
               height: lay.window.height,
               width: lay.window.height,
+              flex: "0 0 " + lay.window.height + "px",
+              alignSelf: "center"
              }}
         >
           <Cloakroom
