@@ -22,6 +22,10 @@
         font-family: "roboto-900";
         src: url("./assets/fonts/roboto-900.ttf") format("truetype");
       }
+@font-face {
+        font-family: DigitalDismay;
+        src: url("./assets/fonts/Digital Dismay.otf") format("opentype");
+      }
 
 body {
  overflow-x: hidden; 
@@ -620,13 +624,28 @@ transition: 2s;
   display: flex;
   align-items: center;
   width: 100%;
-  height: 30px;
+  height: 2rem;
   margin-bottom: 3px;
   position: relative;
 }
 
 .field-wrapper input {
+  flex: 1 1 50%;
+  width: 50%;
+  height: 100%;
+  background: black;
+  color: yellow;
   box-sizing: border-box;
+  font-family: DigitalDismay;
+  font-size: 2rem;
+}
+
+.field-wrapper--valid input {
+  color: green;
+}
+
+.field-wrapper--invalid input {
+  color: red;
 }
 
 .field-error {

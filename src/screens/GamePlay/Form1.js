@@ -43,6 +43,10 @@ export const Form1 = ({
                 errMask1 = errMask2 = 'Маски подсети двух устройств должны совпадать!'
             }
         }
+        if (!errIp1) errIp1 = false
+        if (!errIp2) errIp2 = false
+        if (!errMask1) errMask1 = false
+        if (!errMask2) errMask2 = false
 
         setIp1({ ...ip1, error: errIp1 })
         setIp2({ ...ip2, error: errIp2 })

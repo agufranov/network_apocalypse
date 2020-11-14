@@ -23,7 +23,7 @@ export const ComplexForm = ({
         const errors = fields.reduce((errors, { key }) => ({
             ...errors,
             [key]: {
-                value: null,
+                value: false,
                 lens: lensPath([key, 'error'])
             }
         }), {})

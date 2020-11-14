@@ -13,18 +13,13 @@ export const Field = ({ label, field, setField }) => {
     }, [field])
     return (
         <div
-            className="field-wrapper"
+            className={cn('field-wrapper', {
+                'field-wrapper--valid': field.error === false,
+                'field-wrapper--invalid': field.error
+            })}
         >
             <label style={{ flex: '1 1 50%' }}>{label}</label>
             <input
-                style={{
-                    flex: '1 1 50%',
-                    borderWidth: 1,
-                    borderStyle: 'solid',
-                    borderColor: field.error ? 'red' : 'grey',
-                    borderRadius: 3,
-                    height: '100%'
-                }}
                 value={field.value}
                 onChange={e => setField({ ...field, value: e.target.value })}
             />
