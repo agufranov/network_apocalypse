@@ -768,3 +768,24 @@ input[type=checkbox] {
   width: 20px;
   height: 20px;
 }
+
+.checks-error {
+  position: absolute;
+  background: #000000AA;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0px;
+}
+
+.checks-error-inner {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  right: 10%;
+  bottom: 40%;
+  line-height: 30px;
+  padding: 8px;
+  color: red;
+  background: black;
+}
