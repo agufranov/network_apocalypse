@@ -20,12 +20,11 @@ const Cloakroom = ({
           const DressComponent = dresses[dress];
           return <DressComponent key={dress} onClick={() => onDressToggle(dress)} isSelected={selectedDresses[dress]} />
         })}
-        <Draggable >
+        
           <Commutator droppableId={"1"}
              onDragEnter={onCommutatorClick}
           />
           <CableSVG/>
-        </Draggable>
       </Box>
     </>
   )
