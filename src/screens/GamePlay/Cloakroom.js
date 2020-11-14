@@ -51,14 +51,15 @@ const Box = styled.div`
 `
 
 const Commutator = styled.div`
-  width: 100px;
-  height: 15px;
-  left: 40px;
-  bottom: 50px;
-  background-color: white;
-  border: 1px solid white;
+  width: 30%;
+  height: 10%;
+  left: 8%;
+  top: 15%;
+  background-color: transparent;
+  //border: 1px solid white;
   position: absolute;
   transition: all ease 0.3s;
+  cursor: pointer;
 `
 
 const dresses = {

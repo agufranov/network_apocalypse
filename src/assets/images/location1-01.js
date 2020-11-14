@@ -3,11 +3,51 @@ import React, { Component } from "react";
 export default class OveralSceneSVG extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = { 
+			allWindows: true,
+			allWindows2: true
+		}
+	}
+
+	componentDidMount(){
+		setInterval(()=>{
+			setTimeout(() => {this.setState({allWindows: !this.state.allWindows})},500)
+			setTimeout(() => { this.setState({ allWindows: !this.state.allWindows }) }, 800)
+			setTimeout(() => { this.setState({ allWindows: !this.state.allWindows }) }, 2000)
+			setTimeout(() => { this.setState({ allWindows: !this.state.allWindows }) }, 2300)
+			setTimeout(() => { this.setState({ allWindows: !this.state.allWindows }) }, 2400)
+			setTimeout(() => { this.setState({ allWindows: !this.state.allWindows }) }, 2700)
+
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 2500)
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 2800)
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 4000)
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 4300)
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 4400)
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 4700)
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 4900)
+			setTimeout(() => { this.setState({ allWindows2: !this.state.allWindows2 }) }, 5000)
+		},
+		9000)
 	}
 
 	render() {
 		let noteBookXY = (this.props.selectedDresses.hat && this.props.selectedDresses.shoes && this.props.selectedDresses.pants) ? 'M764.7,2694.8' :'M864.7,2994.8'
+		let color1 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color2 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color3 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color4 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color5 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color6 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color7 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color8 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color9 = this.state.allWindows ? '#001' : '#FCEE21'
+		let color10 = this.state.allWindows2 ? '#001' : '#FCEE21'
+		let color11 = this.state.allWindows2 ? '#001' : '#FCEE21'
+		let color12 = this.state.allWindows2 ? '#001' : '#FCEE21'
+		let color13 = this.state.allWindows2 ? '#001' : '#FCEE21'
+		let color14 = this.state.allWindows2 ? '#001' : '#FCEE21'
+		let color15 = this.state.allWindows2 ? '#001' : '#FCEE21'
+		let color16 = this.state.allWindows2 ? '#001' : '#FCEE21'
 		return (    
         <div style={{padding: 0, marginTop: 0, marginLeft: 0, height: "100%", weight: "100%"}}>	
 
@@ -318,65 +358,65 @@ S7wDIOsNiFOkzsZOZ4p1Q6pdo4rtqAOCn2zvXc5kyeJCIpjtBMztXc5vlvFin2zPG1WaPIOoqYm3
 gCpmbuBNiAAkBqA+g//Z" transform="matrix(1 0 0 1 1189 1189)">
 				</image>
 			</g>
-			<rect x="1482.3" y="166.8" clip-path="url(#SVGID_2_)" fill="#FCEE21" width="40.5" height="40.5"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1191.6,456.7c0.2-10.6,0.4-21.3,0.6-31.9c9.8-3.3,21.3-4.3,29.7,1.6
+			<rect x="1482.3" y="166.8" clip-path="url(#SVGID_2_)" fill={color1} style={{transition: "1s"}} width="40.5" height="40.5"/>
+			<path clip-path="url(#SVGID_2_)" fill={color13} style={{transition: "1s"}} d="M1191.6,456.7c0.2-10.6,0.4-21.3,0.6-31.9c9.8-3.3,21.3-4.3,29.7,1.6
 				s10.3,20.7,1.5,26c-8.5,0.6-17.1,1.2-25.6,1.8"/>
 			<path clip-path="url(#SVGID_2_)" fill="#FBB03B" d="M1263.7,453.7c0.1-11.9,0.3-23.7,0.4-35.6c3.7-0.9,7.5-0.9,11.2,0
 				c1.1,9.8,0.8,19.7-0.7,29.4c-2.6,0.1-5.2,0.1-7.8,0.2"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1488.8,294.7c-0.1-15.6-0.3-31.2-0.4-46.7c8.3,4.7,17.7,7.4,27.2,7.9
+			<path clip-path="url(#SVGID_2_)" fill={color2} style={{transition: "1s"}} d="M1488.8,294.7c-0.1-15.6-0.3-31.2-0.4-46.7c8.3,4.7,17.7,7.4,27.2,7.9
 				c0,11.9-0.1,23.8-0.1,35.6c-7,0.4-14-0.7-20.5-3.2"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1569.8,198.7c0.2-10.7,0.3-21.5,0.5-32.2c10.4-2.6,24.5-3.6,28.8,6.3
+			<path clip-path="url(#SVGID_2_)" fill={color3} style={{transition: "1s"}} d="M1569.8,198.7c0.2-10.7,0.3-21.5,0.5-32.2c10.4-2.6,24.5-3.6,28.8,6.3
 				c1.3,3.1,1.2,6.6,1.1,9.9c-0.3,10.1-0.6,20.2-1,30.2c-6.2-9.7-18-15.5-29.5-14.6"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1557.8,276.7c-0.1-9.6-0.2-19.2-0.2-28.8c5.6,1.9,11.6,2.7,17.5,2.2
+			<path clip-path="url(#SVGID_2_)" fill={color4} style={{transition: "1s"}} d="M1557.8,276.7c-0.1-9.6-0.2-19.2-0.2-28.8c5.6,1.9,11.6,2.7,17.5,2.2
 				c2.9,13.8,5.8,27.6,8.7,41.4c-8.6,0-17.1-0.1-25.7-0.1c-0.2-7.9-0.3-15.8-0.5-23.7"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1480.7,414.5c-3.3-14.3-4.7-29.1-4.2-43.7c8.5,3.7,17.9,5.6,27.2,5.4
+			<path clip-path="url(#SVGID_2_)" fill={color5} style={{transition: "1s"}} d="M1480.7,414.5c-3.3-14.3-4.7-29.1-4.2-43.7c8.5,3.7,17.9,5.6,27.2,5.4
 				c0,15.9,0,31.8,0,47.7c-7.8-1.2-15.6-2.3-23.4-3.5c-0.1-4.9-0.3-9.8-0.4-14.6"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1581.8,483.7c0.1-11.6,0.2-23.2,0.3-34.8c6.8,4.7,15.4,6.6,23.5,5.1
+			<path clip-path="url(#SVGID_2_)" fill={color6} style={{transition: "1s"}} d="M1581.8,483.7c0.1-11.6,0.2-23.2,0.3-34.8c6.8,4.7,15.4,6.6,23.5,5.1
 				c0.1,11.7,0.2,23.5,0.2,35.2c-6.5-2.5-13.6-3.5-20.6-2.8c-0.2-2.9-0.4-5.8-0.6-8.7"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1540,492.7c-0.2-15-0.4-30-0.6-44.9c-8.1,2.5-16.2,4.9-24.3,7.4
+			<path clip-path="url(#SVGID_2_)" fill={color7} style={{transition: "1s"}} d="M1540,492.7c-0.2-15-0.4-30-0.6-44.9c-8.1,2.5-16.2,4.9-24.3,7.4
 				c4.9,14.8,7.4,30.4,7.4,46.1c6.7-1.1,13.3-2.2,20-3.3c0.2-3.7,0.4-7.4,0.6-11.2"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1131.7,549.7c0.2-11.9,0.3-23.8,0.5-35.7c10.8,0,21.6,0,32.4,0.1
+			<path clip-path="url(#SVGID_2_)" fill={color8} style={{transition: "1s"}} d="M1131.7,549.7c0.2-11.9,0.3-23.8,0.5-35.7c10.8,0,21.6,0,32.4,0.1
 				c0,11.8,0,23.5-0.1,35.3c-8.8-0.5-17.8,0.7-26.2,3.3c-0.2-7-0.4-13.9-0.6-20.9"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1207.5,549.7c-1.5-12.6-3-25.2-4.5-37.8c5.7,5.5,13.6,8.8,21.5,8.8
+			<path clip-path="url(#SVGID_2_)" fill={color9} style={{transition: "1s"}} d="M1207.5,549.7c-1.5-12.6-3-25.2-4.5-37.8c5.7,5.5,13.6,8.8,21.5,8.8
 				c0,9.5-0.1,18.9-0.1,28.4c-5.8,1.1-11.5,2.2-17.3,3.2c-0.2-3.9-0.4-7.7-0.5-11.6"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1269.8,555.7c-0.1-12.6-0.2-25.2-0.2-37.8c5.8,2,11.9,2.8,18,2.2
+			<path clip-path="url(#SVGID_2_)" fill={color1} style={{transition: "1s"}} d="M1269.8,555.7c-0.1-12.6-0.2-25.2-0.2-37.8c5.8,2,11.9,2.8,18,2.2
 				c0,11.7-0.1,23.4-0.1,35.1c-5,1.7-10.7,1-15.1-1.9"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1483.5,591.7c-1.2-9.9-2.3-19.8-3.5-29.7c7.8,0,15.7,0,23.5,0.1
+			<path clip-path="url(#SVGID_2_)" fill={color2} style={{transition: "1s"}} d="M1483.5,591.7c-1.2-9.9-2.3-19.8-3.5-29.7c7.8,0,15.7,0,23.5,0.1
 				c0,10.8,0,21.5,0,32.3c-5.9-0.4-11.9,0.5-17.4,2.8c-0.2-2.8-0.4-5.7-0.5-8.5"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1569.8,588.7c-0.1-14.6-0.2-29.2-0.3-43.8c7.8,1.9,15.9,2.7,24,2.1
+			<path clip-path="url(#SVGID_2_)" fill={color3} style={{transition: "1s"}} d="M1569.8,588.7c-0.1-14.6-0.2-29.2-0.3-43.8c7.8,1.9,15.9,2.7,24,2.1
 				c-0.5,13.8,0.4,27.7,2.8,41.3c-8.8,0.1-17.6,0.3-26.4,0.4"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1644.7,579.7c0.2-15.9,0.3-31.7,0.5-47.6c6.5,0.1,13.1,0.1,19.6,0.2
+			<path clip-path="url(#SVGID_2_)" fill={color4} style={{transition: "1s"}} d="M1644.7,579.7c0.2-15.9,0.3-31.7,0.5-47.6c6.5,0.1,13.1,0.1,19.6,0.2
 				c4.6,15.3,8.1,31,10.3,46.8c-6.9,0-13.8,0-20.7,0c-1.1-2.8-2.3-5.7-3.4-8.5"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1608.8,360.7c0.1-8.9,0.2-17.8,0.3-26.7c6.8,0,13.6,0,20.4,0
+			<path clip-path="url(#SVGID_2_)" fill={color5} style={{transition: "1s"}} d="M1608.8,360.7c0.1-8.9,0.2-17.8,0.3-26.7c6.8,0,13.6,0,20.4,0
 				c0,10.8,0,21.6-0.1,32.4c-6.3-1.4-13.3,0.6-18,5c0.1-3.6,0.2-7.2,0.3-10.8"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1482.8,660.7c0.1-7.9,0.3-15.7,0.4-23.6c9.9-1.7,19.8-3.4,29.6-5
+			<path clip-path="url(#SVGID_2_)" fill={color6} style={{transition: "1s"}} d="M1482.8,660.7c0.1-7.9,0.3-15.7,0.4-23.6c9.9-1.7,19.8-3.4,29.6-5
 				c0,11.8,0.1,23.6,0.1,35.3c0,1.8,0,3.6-1.1,5.1c-1.1,1.6-3.2,2.1-5.1,2.6c-6.9,1.7-13.9,3.4-20.8,5.1c-0.1-6.5-0.2-13-0.3-19.5"
 				/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1582.7,729.7c-1.1-12.9-2.1-25.7-3.2-38.6c7.5,0,15.1,0.1,22.6,0.1
+			<path clip-path="url(#SVGID_2_)" fill={color7} style={{transition: "1s"}} d="M1582.7,729.7c-1.1-12.9-2.1-25.7-3.2-38.6c7.5,0,15.1,0.1,22.6,0.1
 				c1.1,16.5,2.2,32.9,3.3,49.4c-5.7,3.8-13.9,3.4-19.1-1s-7-12.5-4.1-18.7"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1644.6,729.7c1.3-12.9,0.6-26.1-2.1-38.8c6.6,0,13.2,0.1,19.9,0.1
+			<path clip-path="url(#SVGID_2_)" fill={color8} style={{transition: "1s"}} d="M1644.6,729.7c1.3-12.9,0.6-26.1-2.1-38.8c6.6,0,13.2,0.1,19.9,0.1
 				c2.4,13.8,4.7,27.5,7.1,41.3c-8,0-16.1,0-24.1,0.1c-0.2-4.9-0.3-9.8-0.5-14.7"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M1375.4,663.5c0.1-7.8,0.2-15.7,0.3-23.5c5.8,0,11.6,0,17.4,0
+			<path clip-path="url(#SVGID_2_)" fill={color9} style={{transition: "1s"}} d="M1375.4,663.5c0.1-7.8,0.2-15.7,0.3-23.5c5.8,0,11.6,0,17.4,0
 				c0,12.8,0,25.5,0,38.3c-10.1,3.3-20.1-11.4-13.3-19.6"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M567.7,498.7c0.1-12.8,0.2-25.7,0.3-38.5c6.9-1.2,13.9-1,20.7,0.5
+			<path clip-path="url(#SVGID_2_)" fill={color10} style={{transition: "1s"}} d="M567.7,498.7c0.1-12.8,0.2-25.7,0.3-38.5c6.9-1.2,13.9-1,20.7,0.5
 				c-0.1,13.6-0.1,27.1-0.2,40.7c-6.8,0-13.6,0-20.3-0.1c-0.2-2.8-0.4-5.7-0.6-8.5"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M627.6,507.7c0.2-12.8,0.3-25.7,0.5-38.5c6.8,0,13.6,0,20.4,0
+			<path clip-path="url(#SVGID_2_)" fill={color1} style={{transition: "1s"}} d="M627.6,507.7c0.2-12.8,0.3-25.7,0.5-38.5c6.8,0,13.6,0,20.4,0
 				c0,11.7-0.1,23.4-0.1,35.1c-6.7,0-13.5,0-20.2,0c-0.2-3.8-0.4-7.7-0.6-11.5"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M622.4,609.7c-1.2-13.8-2.4-27.7-3.6-41.5c5.9,0,11.8,0,17.7,0
+			<path clip-path="url(#SVGID_2_)" fill={color11} style={{transition: "1s"}} d="M622.4,609.7c-1.2-13.8-2.4-27.7-3.6-41.5c5.9,0,11.8,0,17.7,0
 				c0,14.7,0.1,29.5,0.1,44.2c-4.8,0-9.7,0-14.5,0.1c-0.2-2.9-0.4-5.8-0.6-8.7"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M687.6,597.7c0.2-16.9,0.3-33.8,0.5-50.7c6.7,2.1,13.4,4.1,20.1,6.2
+			<path clip-path="url(#SVGID_2_)" fill={color12} style={{transition: "1s"}} d="M687.6,597.7c0.2-16.9,0.3-33.8,0.5-50.7c6.7,2.1,13.4,4.1,20.1,6.2
 				c0.7,14.7,0.7,29.4,0,44c-6.7,0-13.4,0-20.2,0c-0.2-2.8-0.4-5.7-0.6-8.5"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M561.6,666.7c0.2-11.9,0.3-23.7,0.5-35.6c6.8,0,13.6,0,20.4,0.1
+			<path clip-path="url(#SVGID_2_)" fill={color13} style={{transition: "1s"}} d="M561.6,666.7c0.2-11.9,0.3-23.7,0.5-35.6c6.8,0,13.6,0,20.4,0.1
 				c0,14.7,0.1,29.4,0.1,44.2c-6.4-2.6-13.5-3.7-20.4-3c-0.2-5.9-0.3-11.8-0.5-17.6"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M654.8,675.7c-1.8-11.9-3.6-23.9-5.4-35.8c8.7,0.1,17.4,0.1,26.1,0.2
+			<path clip-path="url(#SVGID_2_)" fill={color14} style={{transition: "1s"}} d="M654.8,675.7c-1.8-11.9-3.6-23.9-5.4-35.8c8.7,0.1,17.4,0.1,26.1,0.2
 				c0,11.7-0.1,23.4-0.1,35.1c-6.5,2.7-14.5,1-19.3-4"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M348.6,663.7c0.2-8.9,0.3-17.7,0.5-26.6c7.8,0,15.6,0,23.4,0
+			<path clip-path="url(#SVGID_2_)" fill={color15} style={{transition: "1s"}} d="M348.6,663.7c0.2-8.9,0.3-17.7,0.5-26.6c7.8,0,15.6,0,23.4,0
 				c0,14.8,0,29.5,0.1,44.3c-7.8,0-15.6,0-23.4,0c-0.2-7.9-0.3-15.8-0.5-23.7"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M285.6,690.7c0.2-14.9,0.3-29.8,0.5-44.7c7.8,0,15.6,0,23.4,0
+			<path clip-path="url(#SVGID_2_)" fill={color16} style={{transition: "1s"}} d="M285.6,690.7c0.2-14.9,0.3-29.8,0.5-44.7c7.8,0,15.6,0,23.4,0
 				c0,11.7-0.1,23.4-0.1,35.1c-7.8,2-15.5,3.9-23.3,5.9c-0.2-3.8-0.4-7.5-0.6-11.3"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M180.7,699.7c-0.1-13.6-0.2-27.2-0.3-40.8c6.8,2,14,2.8,21.1,2.2
+			<path clip-path="url(#SVGID_2_)" fill={color11} style={{transition: "1s"}} d="M180.7,699.7c-0.1-13.6-0.2-27.2-0.3-40.8c6.8,2,14,2.8,21.1,2.2
 				c0,14.9,0,29.7,0,44.6c-6.4-1.8-13.6,0.1-18.3,4.8c0.1-4.6,0.3-9.2,0.4-13.8"/>
-			<path clip-path="url(#SVGID_2_)" fill="#FCEE21" d="M326.9,837.9c-2.6-13.8-3.2-27.9-1.6-41.9c7.7,0,15.4,0,23.1,0
+			<path clip-path="url(#SVGID_2_)" fill={color12} style={{transition: "1s"}} d="M326.9,837.9c-2.6-13.8-3.2-27.9-1.6-41.9c7.7,0,15.4,0,23.1,0
 				c-0.7,13.8,0.1,27.6,2.4,41.2c-6.9,1.4-14.1,1-20.8-1.4"/>
 			<path clip-path="url(#SVGID_2_)" fill="#4F4E5E" d="M2837.8,2834.6c0,0-2834.6,0-2834.6,0c0,0,0-414.3,0-438.6
 				c0-285.6,0-571.3,0-856.9c0-121.7,0-243.4,0-365c0-42.7-0.1-85.4,0-128.1c0-25.6-5.4-60.2,11.8-81.5

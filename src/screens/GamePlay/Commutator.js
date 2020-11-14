@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import { themes } from "../../constants/Colors"
+import RouterSVG from "../../assets/images/RouterSVG"
 
 const Commutator = ({
   isOpen,
@@ -9,6 +10,7 @@ const Commutator = ({
   return (
     <>
       <Box isOpen={isOpen}>
+        <RouterSVG/>
       </Box>
     </>
   )
@@ -16,14 +18,14 @@ const Commutator = ({
 
 const Box = styled.div`
   width: ${props => props.isOpen ? '50%' : '50px'};
-  height: ${props => props.isOpen ? '5%' : '10px'};
+  height: ${props => props.isOpen ? '4%' : '10px'};
   left: ${props => props.isOpen ? '25%' : '50%'};
-  bottom: ${props => props.isOpen ? '3%' : '20%'};
-  background-color: green;
+  bottom: ${props => props.isOpen ? '6%' : '20%'};
+  background-color: transparent;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
   z-index: 20;
-  transition: all ease 0.3s;
+  transition: all ease 0.9s;
 `
 export default Commutator;
