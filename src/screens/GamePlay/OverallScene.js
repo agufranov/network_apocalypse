@@ -11,6 +11,8 @@ import OveralSceneSVG from "../../assets/images/location1-01"
 import { Quiz } from './Quiz'
 import {lay} from "../../constants/Layout"
 import { over, inc, lensProp } from 'ramda'
+import Lan1SVG from "../../assets/images/Lan1SVG"
+import Lan2SVG from "../../assets/images/Lan2SVG"
 
 const ALL_DRESSES = ['hat', 'shoes', 'pants']
 
@@ -45,6 +47,7 @@ export default class OverallScene extends React.Component {
       isNotebookOnceOpened: true,
       // isCommutatorActivated: false,
       isCommutatorActivated: true,
+      onIPsCorrect: false,
     }
   }
 
@@ -138,7 +141,8 @@ export default class OverallScene extends React.Component {
       selectedDresses,
       isCommutatorActivated,
       isNotebookOnceOpened,
-      isStart
+      isStart,
+      onIPsCorrect
     } = this.state
 
     return (
@@ -185,10 +189,12 @@ export default class OverallScene extends React.Component {
               onOpen={this.openNotebook}
               isWorking={isCommutatorActivated}
               selectedDresses={selectedDresses}
-              onIPsCorrect={() => {}}
+              onIPsCorrect={() => { this.setState({ onIPsCorrect: true})}}
             />
           }
-          <Commutator isOpen={scenes.commutator} />
+          <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />
+          <Lan1SVG onIPsCorrect={onIPsCorrect} />
+          <Lan2SVG onIPsCorrect={onIPsCorrect} />
           <Overlay isOpen={overlay} isLoading={overlayLoading} onClose={this.closeAll} />
         </Main>
       </Container>

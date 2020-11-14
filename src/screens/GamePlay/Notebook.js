@@ -13,7 +13,7 @@ const Notebook = ({
   selectedDresses,
   onIPsCorrect
 }) => {
-  const [currentStep, setCurrentStep] = useState(2)
+  const [currentStep, setCurrentStep] = useState(1)
   return (
     <>
       {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants && <Button onClick={onOpen} />}
