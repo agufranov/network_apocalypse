@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CloakroomSVG from "../../assets/images/CloakroomSVG"
-
+import CableSVG from "../../assets/images/CableSVG"
 const Cloakroom = ({
   isOpen,
   onOpen,
@@ -20,8 +20,12 @@ const Cloakroom = ({
           const DressComponent = dresses[dress];
           return <DressComponent key={dress} onClick={() => onDressToggle(dress)} isSelected={selectedDresses[dress]} />
         })}
-
-        <Commutator onClick={onCommutatorClick} />
+        <Draggable >
+          <Commutator droppableId={"1"}
+             onDragEnter={onCommutatorClick}
+          />
+          <CableSVG/>
+        </Draggable>
       </Box>
     </>
   )
@@ -48,6 +52,15 @@ const Box = styled.div`
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
   z-index: 20;
   transform: ${props => props.isOpen ? 'translate3d(0, 0, 0) scale(1)' : 'translate3d(0, 0, 0) scale(0.1)'};
+  transition: all ease 0.3s;
+`
+const Draggable = styled.div`
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  position: absolute;
   transition: all ease 0.3s;
 `
 
