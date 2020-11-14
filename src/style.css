@@ -816,7 +816,7 @@ input[type=checkbox] {
   width: 200px;
   height: 200px;
   background: #606060;
-  margin: 50px;
+  margin: 10px;
   opacity: 0.7;
   cursor: pointer;
   transition: all ease 0.3s;

@@ -15,7 +15,7 @@ export default class Lavels extends React.Component {
         style={{ backgroundColor: themes.dark.allBackground }}
         className="levels"
       >
-        <h1 style={{ color: 'whote', marginTop: 50 }}>Выбор уровня</h1>
+        <h1 style={{ color: '#ddd', marginTop: 50 }}>Выбор уровня</h1>
         <div style={{ display: 'flex', flexWrap: 'wrap', margin: '0 100px' }}>
           <div className="item" onClick={this.props.onSelect}>
             <img src="level.png" />
@@ -49,7 +49,6 @@ const Container = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   position: relative;
-  height: 100vh;
   width: 100vw;
 `;
 
