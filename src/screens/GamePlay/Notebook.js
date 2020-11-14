@@ -78,7 +78,7 @@ const Box = styled.div`
   height: 35%;
   left: 25%;
   bottom: 20%;
-  background-color: #ACF;
+  background-color: 'transparent';
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
