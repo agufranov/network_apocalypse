@@ -16,17 +16,17 @@ export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      // isStart: true,
-      isStart: false,
-      // overlay: false,
-      overlay: true,
+       isStart: true,
+      //isStart: false,
+       overlay: false,
+      //overlay: true,
       overlayLoading: false,
       scenes: {
         cloakroom: false,
-        // notebook: false,
-        notebook: true,
-        // commutator: false
-        commutator: true
+         notebook: false,
+        //notebook: true,
+         commutator: false
+        //commutator: true
       },
       selectedDresses: {
         hat: false,
@@ -36,7 +36,8 @@ export default class OverallScene extends React.Component {
      /*  
      selectedDresses: {
         hat: true,
-        shoes: true
+        shoes: true,
+        pants: true,
       },
       */
       isNotebookOnceOpened: false,
@@ -114,6 +115,7 @@ export default class OverallScene extends React.Component {
       overlayLoading,
       selectedDresses,
       isCommutatorActivated,
+      isNotebookOnceOpened,
       isStart
     } = this.state
 
@@ -145,6 +147,8 @@ export default class OverallScene extends React.Component {
             onDressToggle={this.toggleDress}
             selectedDresses={selectedDresses}
             onCommutatorClick={this.onCommutatorClick}
+            isNotebookOnceOpened={isNotebookOnceOpened}
+            isCommutatorActivated={isCommutatorActivated}
           />
           {this.isDressed() &&
             <Notebook

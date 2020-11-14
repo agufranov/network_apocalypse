@@ -3,7 +3,52 @@ import React, { Component } from "react";
 export default class CloakroomSVG extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			lOn: false,
+			l1: false,
+			l2: false,
+		}
+	}
+
+	componentDidMount(){
+		setInterval(() => {
+			this.setState({lOn: false})
+			if (this.props.isNotebookOnceOpened){
+				setTimeout(() => {
+					this.setState({ lOn: true })
+				}, 1000);
+			}
+		}, 2000);
+
+		setInterval(() => {
+			this.setState({ l1: false })
+			if (this.props.isCommutatorActivated) {
+				this.setState({ l1: true })
+				setTimeout(() => {
+					this.setState({ l1: false })
+				}, 300);
+				setTimeout(() => {
+					this.setState({ l1: true })
+				}, 500);
+				setTimeout(() => {
+					this.setState({ l1: false })
+				}, 800);
+				setTimeout(() => {
+					this.setState({ l1: true })
+				}, 1000);
+				setTimeout(() => {
+					this.setState({ l1: false })
+				}, 1200);
+				setTimeout(() => {
+					this.setState({ l1: true })
+				}, 1300);
+				setTimeout(() => {
+					this.setState({ l1: false })
+				}, 1600);
+			}
+		}, 3000);
+
+
 	}
 
 	render() {
@@ -17,6 +62,10 @@ export default class CloakroomSVG extends React.Component {
 		let color3 = this.props.selectedDresses.pants ? '#0d0' :'#2E3192'
 		let color3a = this.props.selectedDresses.pants ? '#273' : '#140F4B'
 		let color3b = this.props.selectedDresses.pants ? '#293' : '#1B1464'
+
+		let ledOn = this.state.lOn ? '#0d0' : '#070505'
+		let led1 = this.state.l1 ? '#0d0' : '#070505'
+		let led2 = this.state.l1 ? '#0d0' : '#070505'
 		//let noteBookXY = (this.props.selectedDresses.hat && this.props.selectedDresses.shoes) ? 'M764.7,2694.8' : 'M864.7,2994.8'
 		return (   
 
@@ -20559,7 +20608,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO858AAwAJGnUy61ATfQAAAABJRU5ErkJggg==" transf
 					c-0.5-3.8-0.9-7.7-1.4-11.6c-0.1-0.9-0.4-1.7-1.1-1.5c-1.7,0.4-2.3-0.4-3.5-2.7c-2-4-8.3-2.8-9.8,0.4c-0.2,0.4-0.3,1.1-0.2,1.6
 					c0.5,2.2-0.5,2.5-1.7,2.5c-1.3,0-1.6,0.8-1.4,2.6c0.5,3.4,0.9,6.8,1.2,10.2c0.2,2,0.8,2.5,2.2,2.2
 					C322.5,292.9,324.8,292.7,327.1,292.4z"/>
-				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M92.4,314.9c0.7-0.1,1.3-0.1,2-0.2c1-0.1,1.8,0.2,2,1.8
+				{/* индикаторы коммутатора */}
+				<path fill={ledOn} stroke="#546474" stroke-miterlimit="10" d="M92.4,314.9c0.7-0.1,1.3-0.1,2-0.2c1-0.1,1.8,0.2,2,1.8
 					c0.2,1.7-0.1,2.9-1.6,3c-1.1,0.1-2.1,0.2-3.2,0.4c-1.2,0.2-2,0-2.3-2.1c-0.2-2,0.2-2.7,1.6-2.7C91.4,315.1,91.9,315,92.4,314.9
 					C92.4,314.9,92.4,314.9,92.4,314.9z"/>
 				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M123.9,304.1c-0.9,0.1-1.5,0.2-2.1,0.2
@@ -20570,7 +20620,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO858AAwAJGnUy61ATfQAAAABJRU5ErkJggg==" transf
 				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M116.8,316.2c-0.7,0.1-1.5,0.2-2.2,0.3
 					c-0.8,0.1-1.2-0.6-1.3-1.6c-0.1-1.1-0.3-2.2,0.8-2.3c1.4-0.2,2.8-0.4,4.2-0.6c1-0.1,1.6,0.3,1.8,1.8c0.2,1.4-0.2,2.2-1.2,2.3
 					C118.1,316,117.5,316.1,116.8,316.2z"/>
-				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M114.7,301c0.4,0,0.7-0.1,0.9-0.1c1.1,0.1,2.5-1,2.9,1.4
+				<path fill={led1} stroke="#546474" stroke-miterlimit="10" d="M114.7,301c0.4,0,0.7-0.1,0.9-0.1c1.1,0.1,2.5-1,2.9,1.4
 					c0.4,2.5-1.1,2.5-2.3,2.7c-0.7,0.1-1.5,0.1-2.2,0.3c-1.2,0.3-1.9-0.4-2.1-2.1c-0.2-1.9,0.5-2.4,1.7-2.2
 					C114,301,114.4,301,114.7,301z"/>
 				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M151,312.1c-0.6,0.1-1.1,0.1-1.7,0.2c-1,0.1-1.6-0.4-1.8-1.8
@@ -20585,7 +20635,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACO858AAwAJGnUy61ATfQAAAABJRU5ErkJggg==" transf
 				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M140.1,298c0.7-0.1,1.3-0.2,2-0.2c0.8,0,1.2,0.7,1.3,1.7
 					c0.1,1-0.1,1.8-0.9,2c-1.1,0.2-2.3,0.4-3.4,0.5c-1,0.1-1.9-0.1-2.1-1.7c-0.2-1.7,0.7-2,1.6-2.1C139.1,298.1,139.6,298,140.1,298
 					C140.1,298,140.1,298,140.1,298z"/>
-				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M132.1,302.8c-0.7,0.1-1.3,0.2-2,0.2c-0.9,0-1.4-0.7-1.5-1.9
+				<path fill={led2} stroke="#546474" stroke-miterlimit="10" d="M132.1,302.8c-0.7,0.1-1.3,0.2-2,0.2c-0.9,0-1.4-0.7-1.5-1.9
 					c-0.1-1.1,0.2-1.7,1-1.9c1.1-0.2,2.1-0.3,3.2-0.4c0.9-0.1,1.9-0.2,2.2,1.5c0.3,1.9-0.7,2.2-1.7,2.4
 					C132.9,302.7,132.5,302.8,132.1,302.8C132.1,302.8,132.1,302.8,132.1,302.8z"/>
 				<path fill="#070505" stroke="#546474" stroke-miterlimit="10" d="M198.6,307.8c-2.4,0.3-4.8,0.5-7.1,0.9c-1.2,0.2-1.8-0.3-2-2.1

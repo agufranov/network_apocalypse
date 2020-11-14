@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Form1 } from "./Form1";
 import { Form2 } from "./Form2";
 import NotebookSVG from "../../assets/images/notebookSVG"
+import CableSVG from "../../assets/images/CableSVG"
 
 const Notebook = ({
   isOpen,
@@ -21,7 +22,7 @@ const Notebook = ({
           {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
           {currentStep === 3 && 'Success!'}
         </>
-          : <p>'Not working'</p>
+          : <CableSVG/>
         } 
       </Box>
     </>

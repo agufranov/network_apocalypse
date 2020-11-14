@@ -9,13 +9,14 @@ const Cloakroom = ({
   allDresses,
   onDressToggle,
   selectedDresses,
-  onCommutatorClick
+  onCommutatorClick,
+  isNotebookOnceOpened,
 }) => {
   return (
     <>
       <Button onClick={onOpen} />
       <Box isOpen={isOpen}>
-        <CloakroomSVG selectedDresses={selectedDresses}/>
+        <CloakroomSVG selectedDresses={selectedDresses} isNotebookOnceOpened={isNotebookOnceOpened}/>
         {allDresses.map(dress =>  {
           const DressComponent = dresses[dress];
           return <DressComponent key={dress} onClick={() => onDressToggle(dress)} isSelected={selectedDresses[dress]} />
