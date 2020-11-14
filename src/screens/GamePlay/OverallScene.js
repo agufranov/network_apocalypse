@@ -49,7 +49,7 @@ export default class OverallScene extends React.Component {
   }
 
   containerRef = (el) => {
-    el.scrollTo((lay.window.height - window.innerWidth) / 4, 0)
+    el.scrollTo((lay.window.height - window.innerWidth) / 2, 0)
   }
 
   endStart=()=>{
@@ -155,7 +155,8 @@ export default class OverallScene extends React.Component {
               height: lay.window.height,
               width: lay.window.height,
               flex: "0 0 " + lay.window.height + "px",
-              alignSelf: "center"
+              alignSelf: "center",
+              margin: "0 auto"
              }}
         >
           <OveralSceneSVG
@@ -196,10 +197,11 @@ export default class OverallScene extends React.Component {
 }
 
 const Container = styled.div`
-  display: flex;
+display: block;
+  /* display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   height: 100vh;
   width: 100vw;
   overflow-x: scroll;
