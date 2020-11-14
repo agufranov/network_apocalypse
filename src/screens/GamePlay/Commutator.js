@@ -5,11 +5,12 @@ import RouterSVG from "../../assets/images/RouterSVG"
 const Commutator = ({
   isOpen,
   onOpen,
+  onIPsCorrect,
 }) => {
   return (
     <>
       <Box isOpen={isOpen}>
-        <RouterSVG/>
+        <RouterSVG onIPsCorrect={onIPsCorrect}/>
       </Box>
     </>
   )

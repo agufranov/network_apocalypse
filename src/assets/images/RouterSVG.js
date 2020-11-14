@@ -18,7 +18,7 @@ export default class RouterSVG extends React.Component {
 
 		setInterval(() => {
 			this.setState({ l1: false })
-			if (true) {
+			if (this.props.onIPsCorrect) {
 				this.setState({ l1: true })
 				setTimeout(() => {
 					this.setState({ l1: false })
