@@ -639,6 +639,7 @@ transition: 2s;
   bottom: -7px;
   opacity: 0;
   transition: all ease 0.3s;
+  z-index: 2;
 }
 
 .field-error.field-error--shown {

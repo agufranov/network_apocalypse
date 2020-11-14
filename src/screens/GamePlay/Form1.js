@@ -15,32 +15,32 @@ export const Form1 = ({
         if (isSubmitting) return
         let errIp1 = null, errIp2 = null, errMask1 = null, errMask2 = null
         if (!IPRgx.test(ip1.value)) {
-            errIp1 = 'Format'
+            errIp1 = 'IP-адрес должен иметь верный формат!'
         }
         if (!IPRgx.test(ip2.value)) {
-            errIp2 = 'Format'
+            errIp2 = 'IP-адрес должен иметь верный формат'
         }
         if (!errIp1 && !errIp2) {
             if (ip1.value === ip2.value) {
-                errIp1 = errIp2 = 'Duplicate'
+                errIp1 = errIp2 = 'IP-адреса двух устройств должны различаться!'
             } else {
                 const [a1, b1, c1] = ip1.value.split('.')
                 const [a2, b2, c2] = ip2.value.split('.')
                 if (a1 !== a1 || b1 !== b2 || c1 !== c2) {
-                    errIp1 = errIp2 = 'Not in one network'
+                    errIp1 = errIp2 = 'IP-адреса двух устройств должны быть в одной сети!'
                 }
             }
         }
 
         if (!IPRgx.test(mask1.value)) {
-            errMask1 = 'Format'
+            errMask1 = 'IP-адрес должен иметь верный формат'
         }
         if (!IPRgx.test(mask2.value)) {
-            errMask2 = 'Format'
+            errMask2 = 'IP-адрес должен иметь верный формат'
         }
         if (!errMask1 && !errMask2) {
             if (mask1.value !== mask2.value) {
-                errMask1 = errMask2 = 'Not equal'
+                errMask1 = errMask2 = 'Маски подсети двух устройств должны совпадать!'
             }
         }
 
