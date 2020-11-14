@@ -85,7 +85,7 @@ export const ComplexForm = ({
 
     return (
         <FormWrapper>
-            <form class="form2" onSubmit={onSubmit}>
+            <form className="form2" onSubmit={onSubmit}>
                 {
                     fields.map(({ label, key }) =>
                         <Field

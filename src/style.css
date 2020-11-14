@@ -681,3 +681,35 @@ button {
 .form2 button {
   margin-left: auto;
 }
+
+.quiz {
+  position: absolute;
+  width: 200px;
+  top: 20px;
+  left: 200px;
+  background: #2d90c9dd;
+  text-align: center;
+}
+
+.quiz-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quiz-button {
+  width: 100%;
+  margin: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  transition: all ease 1s;
+}
+
+.quiz-button--selected.quiz-button--right {
+  background: green;
+}
+
+.quiz-button--selected.quiz-button--wrong {
+  background: red;
+}
