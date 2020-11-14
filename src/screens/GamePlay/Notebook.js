@@ -9,15 +9,18 @@ const Notebook = ({
   isWorking,
   selectedDresses,
 }) => {
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useState(2)
   return (
     <>
       {selectedDresses.hat && selectedDresses.shoes&&<Button onClick={onOpen} />}
       <Box isOpen={isOpen}>
-        {isWorking ? 'Working!' : 'Not working'}
-        {currentStep === 1 && <Form1 onSuccess={() => setCurrentStep(2)}/>}
-        {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)}/>}
-        {currentStep === 3 && 'Success!'}
+        {isWorking ? <>
+          {currentStep === 1 && <Form1 onSuccess={() => {console.log(1);setCurrentStep(2)}} />}
+          {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
+          {currentStep === 3 && 'Success!'}
+        </>
+          : 'Not working'
+        }
       </Box>
     </>
   )
@@ -38,7 +41,7 @@ const Box = styled.div`
   height: ${props => props.isOpen ? '50%' : '50px'};
   left: ${props => props.isOpen ? '13%' : '25%'};
   bottom: ${props => props.isOpen ? '10%' : '25%'};
-  background-color: #FF88EE;
+  background-color: #ACF;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
