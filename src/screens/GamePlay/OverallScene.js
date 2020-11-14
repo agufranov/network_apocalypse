@@ -161,6 +161,8 @@ export default class OverallScene extends React.Component {
               isWorking={isCommutatorActivated}
               selectedDresses={selectedDresses}
               onIPsCorrect={() => { this.setState({ onIPsCorrect: true})}}
+              onValid1={() => alert('1 valid')}
+              onValid2={() => alert('2 valid')}
             />
           }
           <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />

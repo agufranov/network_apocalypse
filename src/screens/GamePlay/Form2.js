@@ -198,9 +198,11 @@ const Checks = ({
 }
 
 export const Form2 = ({
-    onSuccess
+    onSuccess,
+    onValid1,
+    onValid2
 }) => {
-    const [state, setState] = useState(1)
+    const [state, setState] = useState(2)
     const [data1, setData1] = useState(createData())
     const [data2, setData2] = useState(createData())
     const [isValid1, setIsValid1] = useState(false)
@@ -208,7 +210,10 @@ export const Form2 = ({
     const [connected, setConnected] = useState(false)
     const [checked, setChecked] = useState(false)
     const onValidate = (isValid, num) => {
-        if (isValid) setTimeout(() => setState(0), 300)
+        if (isValid) {
+            setTimeout(() => setState(0), 300)
+            num === 1 ? onValid1() : onValid2()
+        }
         if (num === 1) setIsValid1(isValid)
         if (num === 2) setIsValid2(isValid)
     }
@@ -243,7 +248,7 @@ export const Form2 = ({
                 />
             )}
             {state === 3 && (
-                <Checks onSuccess={() => { setChecked(true); setState(0) }} />
+                <Checks onSuccess={() => { setChecked(true); setState(0); onSuccess() }} />
             )}
         </div >
     )
