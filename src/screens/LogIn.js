@@ -27,7 +27,7 @@ class LogIn extends React.Component {
             <div>Введи свое имя:</div>
             <input value={this.props.username} onChange={e => this.props.onChange(e.target.value)} />
           </div>
-          <button>Зажечь свет</button>
+          <button style={{cursor: "pointer"}}>Зажечь свет</button>
         </form>
       </Container>
     );

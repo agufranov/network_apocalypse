@@ -8,6 +8,7 @@ import { Animations } from "../../constants/Animations"
 import { Quiz } from './Quiz'
 import { over, inc, lensProp } from 'ramda'
 import { quizQuestions } from "./quizQuestions"
+import PlugLAN from "../../assets/images/PlugLAN.svg"
 
 const Notebook = ({
   isOpen,
@@ -54,7 +55,9 @@ const Notebook = ({
                 />
               }
             </>
-              : <CableSVG />
+              : <FirstDiv>
+                  <img src={PlugLAN} style={{height: '80%'}}/> 
+                </FirstDiv>
             }
           </InnerWrapper>
         </Wrapper>
@@ -105,6 +108,15 @@ const InnerWrapper = styled.div`
   overflow: hidden scroll;
   position: relative;
   background: darkslategray;
+`
+
+const FirstDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export default Notebook;

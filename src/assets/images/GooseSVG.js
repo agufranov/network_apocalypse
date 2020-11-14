@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Lan1SVG extends React.Component {
+export default class GooseSVG extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
