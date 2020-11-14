@@ -13,7 +13,7 @@ const Notebook = ({
   selectedDresses,
   onIPsCorrect
 }) => {
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useState(2)
   return (
     <>
       {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants && <Button onClick={onOpen} />}
@@ -71,7 +71,7 @@ const Box = styled.div`
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 28px 21px 6px 21px;
+  padding: 31px 23px 25px 23px;
   box-sizing: border-box;
   z-index: 2000;
 `
@@ -79,8 +79,9 @@ const Wrapper = styled.div`
 const InnerWrapper = styled.div`
   width: 100%;
   height: 100%;
-  overflow: scroll;
+  overflow: hidden scroll;
   position: relative;
+  background: darkslategray;
 `
 
 export default Notebook;

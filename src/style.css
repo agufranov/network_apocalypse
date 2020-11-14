@@ -630,8 +630,8 @@ transition: 2s;
 }
 
 .field-wrapper input {
-  flex: 1 1 50%;
-  width: 50%;
+  flex: 1 1 70%;
+  width: 70%;
   height: 100%;
   background: black;
   color: yellow;
@@ -722,6 +722,7 @@ button {
 }
 
 .form2-form {
+  background: darkslategray;
   position: absolute;
   top: 0;
 }
