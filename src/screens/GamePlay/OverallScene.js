@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import { themes } from "../../constants/Colors"
 import { Animations } from "../../constants/Animations"
 import Overlay from "./Overlay";
@@ -26,27 +26,25 @@ export default class OverallScene extends React.Component {
       overlayLoading: false,
       scenes: {
         cloakroom: false,
-         notebook: false,
-        //notebook: true,
-         commutator: false
-        //commutator: true
+        // notebook: false,
+        notebook: true,
+        //  commutator: false
+        commutator: true
       },
+      // selectedDresses: {
+      //   hat: false,
+      //   shoes: false,
+      //   pants: false,
+      // },
       selectedDresses: {
-        hat: false,
-        shoes: false,
-        pants: false,
-      },
-     /*  
-     selectedDresses: {
         hat: true,
         shoes: true,
         pants: true,
       },
-      */
-      isNotebookOnceOpened: false,
-      // isNotebookOnceOpened: true,
-      isCommutatorActivated: false,
-      // isCommutatorActivated: true,
+      // isNotebookOnceOpened: false,
+      isNotebookOnceOpened: true,
+      // isCommutatorActivated: false,
+      isCommutatorActivated: true,
     }
   }
 
@@ -95,7 +93,7 @@ export default class OverallScene extends React.Component {
   }
 
   onCommutatorClick = async () => {
-    if (this.state.isNotebookOnceOpened) {
+    if (this.isDressed() && this.state.isNotebookOnceOpened) {
       this.setState({ isCommutatorActivated: true })
       await this.closeAll()
       this.openNotebook()

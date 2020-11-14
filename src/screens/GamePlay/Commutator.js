@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import { themes } from "../../constants/Colors"
+import React from "react";
+import styled from "styled-components";
 import RouterSVG from "../../assets/images/RouterSVG"
 
 const Commutator = ({

@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import { themes } from "../../constants/Colors"
+import React from "react";
+import styled from "styled-components";
 
 export default class PromoText extends React.Component {
   constructor(props) {
@@ -13,30 +12,30 @@ export default class PromoText extends React.Component {
     }
   }
 
-  componentDidMount(){
-    setTimeout(()=>{
-      this.setState({ 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
         background: '#000d',
         text: "Мир людей погрузился во тьму...",
         stage: 1,
         textColor: '#ddd'
       })
-    },1000)
+    }, 1000)
   }
 
-  changeText=()=>{
-    if(this.state.stage==1){
-      this.setState({ textColor: 'transparent'})
+  changeText = () => {
+    if (this.state.stage === 1) {
+      this.setState({ textColor: 'transparent' })
       setTimeout(() => {
-       this.setState({
-        text: "...спаси город от апокалипсиса...",
-        stage: 2,
-        textColor: '#ddd'
-      })
+        this.setState({
+          text: "...спаси город от апокалипсиса...",
+          stage: 2,
+          textColor: '#ddd'
+        })
       }, 1000)
-      
+
     }
-    if (this.state.stage == 2) {
+    if (this.state.stage === 2) {
       this.setState({ textColor: 'transparent' })
       setTimeout(() => {
         this.setState({
@@ -46,24 +45,24 @@ export default class PromoText extends React.Component {
         })
       }, 1000)
     }
-    if (this.state.stage == 3) {
+    if (this.state.stage === 3) {
       this.setState({ textColor: 'transparent' })
       setTimeout(() => {
-      this.setState({
-        text: "...автоматика отключила питание на участке с КЗ",
-        stage: 4,
-        textColor: '#ddd'
-      })
+        this.setState({
+          text: "...автоматика отключила питание на участке с КЗ",
+          stage: 4,
+          textColor: '#ddd'
+        })
       }, 1000)
     }
-    if (this.state.stage == 4) {
+    if (this.state.stage === 4) {
       this.setState({ textColor: 'transparent' })
       setTimeout(() => {
-      this.setState({
-        text: "",
-        stage: 0,
-        background: 'transparent',
-      })
+        this.setState({
+          text: "",
+          stage: 0,
+          background: 'transparent',
+        })
       }, 500)
 
       setTimeout(() => {
@@ -77,7 +76,7 @@ export default class PromoText extends React.Component {
     return (
       <Container
         style={{ backgroundColor: this.state.background }}
-        onClick={()=>{this.changeText()}}
+        onClick={() => { this.changeText() }}
       >
         <Text
           style={{ color: this.state.textColor }}

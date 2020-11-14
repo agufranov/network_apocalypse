@@ -39,40 +39,40 @@ export const ComplexForm = ({
             errors.gcb.value = errorMsg.cantStartWithDigit('Имя GCB')
         }
 
-        if (!data.gooseId.value) {
-            errors.gooseId.value = errorMsg.cantBeEmpty('GOOSE ID')
-        } else if (otherData.gooseId.value && otherData.gooseId.value !== data.gooseId.value) {
-            errors.gooseId.value = errorMsg.shouldBeEqual('GOOSE ID')
-        }
+        // if (!data.gooseId.value) {
+        //     errors.gooseId.value = errorMsg.cantBeEmpty('GOOSE ID')
+        // } else if (otherData.gooseId.value && otherData.gooseId.value !== data.gooseId.value) {
+        //     errors.gooseId.value = errorMsg.shouldBeEqual('GOOSE ID')
+        // }
 
-        if (!MACRgx.test(data.mac.value)) {
-            errors.mac.value = errorMsg.shouldHaveFormat('MAC-адрес')
-        } else if (otherData.mac.value && otherData.mac.value === data.mac.value) {
-            errors.mac.value = errorMsg.shouldDiffer('MAC-адрес')
-        }
+        // if (!MACRgx.test(data.mac.value)) {
+        //     errors.mac.value = errorMsg.shouldHaveFormat('MAC-адрес')
+        // } else if (otherData.mac.value && otherData.mac.value === data.mac.value) {
+        //     errors.mac.value = errorMsg.shouldDiffer('MAC-адрес')
+        // }
 
-        if (!/[0-9A-Fa-f]{4}/.test(data.appId.value)) {
-            errors.appId.value = 'AppID должен иметь шестнадцатеричный формат!'
-        } else {
-            const appIdValue = parseInt(data.appId.value, 16)
-            if (parseInt('8000', 16) > appIdValue || appIdValue > parseInt('BFFF', 16)) {
-                errors.appId.value = 'AppID должен лежать в диапазоне 8000-BFFF!'
-            }
-        }
+        // if (!/[0-9A-Fa-f]{4}/.test(data.appId.value)) {
+        //     errors.appId.value = 'AppID должен иметь шестнадцатеричный формат!'
+        // } else {
+        //     const appIdValue = parseInt(data.appId.value, 16)
+        //     if (parseInt('8000', 16) > appIdValue || appIdValue > parseInt('BFFF', 16)) {
+        //         errors.appId.value = 'AppID должен лежать в диапазоне 8000-BFFF!'
+        //     }
+        // }
 
-        if (!data.vlanId.value) {
-            errors.vlanId.value = errorMsg.cantBeEmpty('VLAN ID')
-        } else if (otherData.vlanId.value && otherData.vlanId.value !== data.vlanId.value) {
-            errors.vlanId.value = errorMsg.shouldBeEqual('VLAN ID')
-        }
+        // if (!data.vlanId.value) {
+        //     errors.vlanId.value = errorMsg.cantBeEmpty('VLAN ID')
+        // } else if (otherData.vlanId.value && otherData.vlanId.value !== data.vlanId.value) {
+        //     errors.vlanId.value = errorMsg.shouldBeEqual('VLAN ID')
+        // }
 
-        if (data.minTime.value !== '4') {
-            errors.minTime.value = 'Min Time должно иметь значение 4 мс!'
-        }
+        // if (data.minTime.value !== '4') {
+        //     errors.minTime.value = 'Min Time должно иметь значение 4 мс!'
+        // }
 
-        if (data.maxTime.value !== '1000') {
-            errors.maxTime.value = 'Max Time должно иметь значение 1000 мс!'
-        }
+        // if (data.maxTime.value !== '1000') {
+        //     errors.maxTime.value = 'Max Time должно иметь значение 1000 мс!'
+        // }
 
         setData(
             pipe(
@@ -84,8 +84,8 @@ export const ComplexForm = ({
     }
 
     return (
-        <FormWrapper>
-            <form className="form2" onSubmit={onSubmit}>
+        <FormWrapper className="form2-form">
+            <form onSubmit={onSubmit}>
                 {
                     fields.map(({ label, key }) =>
                         <Field
@@ -121,7 +121,7 @@ export const Form2 = ({
         if (isValid1 && isValid2) onSuccess()
     }, [isValid1, isValid2])
     return (
-        <div>
+        <div className="form2">
             <button style={{ background: isValid1 ? 'green' : 'grey' }} onClick={() => setState(1)}>Устройство 1 ({isValid1 ? 'Valid!' : 'Not Valid'})</button>
             <button style={{ background: isValid2 ? 'green' : 'grey' }} onClick={() => setState(2)}>Устройство 2 ({isValid2 ? 'Valid!' : 'Not Valid'})</button>
             {state === 1 && (

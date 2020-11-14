@@ -26,7 +26,7 @@ export const Form1 = ({
             } else {
                 const [a1, b1, c1] = ip1.value.split('.')
                 const [a2, b2, c2] = ip2.value.split('.')
-                if (a1 !== a1 || b1 !== b2 || c1 !== c2) {
+                if (a1 !== a2 || b1 !== b2 || c1 !== c2) {
                     errIp1 = errIp2 = errorMsg.shouldBeInOneNetwork('IP-адреса')
                 }
             }

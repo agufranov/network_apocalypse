@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import axi from '../functions/axiosf';
+import React from "react";
+import styled from "styled-components";
 
 class Header extends React.Component {
   constructor(props) {

@@ -21,40 +21,40 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount(){
-    if (this.state.token = '') { this.setState({ screen: 'LogIn'})}
+  componentDidMount() {
+    // if (this.state.token = '') { this.setState({ screen: 'LogIn' }) }
   }
 
-  route=(u)=>{
-    this.setState({screen: u})
+  route = (u) => {
+    this.setState({ screen: u })
   }
 
-  menuOpenStatusToggle=(u)=>{
+  menuOpenStatusToggle = (u) => {
     this.setState({ menuOpenStatus: u })
   }
 
-  axiUpdate=()=>{
+  axiUpdate = () => {
 
   }
 
-  render(){
+  render() {
 
     return (
       <Container>
-        { this.state.screen == 'LogIn' && <LogIn {...this.state} route = {(u)=>this.route(u)} />}
-        { this.state.screen == 'OverallScene' && <OverallScene props={this.state}/> }
-        { this.state.screen == 'Lavels' && <Lavels props={this.state} />}
+        { this.state.screen === 'LogIn' && <LogIn {...this.state} route={(u) => this.route(u)} />}
+        { this.state.screen === 'OverallScene' && <OverallScene props={this.state} />}
+        { this.state.screen === 'Lavels' && <Lavels props={this.state} />}
 
-        { this.state.screen == '3' && <OverallScene props={this.state}/> }
-        { this.state.screen == '4' && <OverallScene props={this.state} />}
-        {  this.state.screen != 'LogIn' && 
-       
+        { this.state.screen === '3' && <OverallScene props={this.state} />}
+        { this.state.screen === '4' && <OverallScene props={this.state} />}
+        {  this.state.screen !== 'LogIn' &&
+
           <Header
-            {...this.state} 
+            {...this.state}
             route={(u) => this.route(u)}
             menuOpenStatusToggle={(u) => this.menuOpenStatusToggle(u)}
-          ></Header>  
-        }    
+          ></Header>
+        }
       </Container>
     );
   }
@@ -79,32 +79,32 @@ const HeaderComponentStack = styled.div`
 `;
 export default App;
 
-      {/*
+{/*
       <Route path="/" exact component={RootScreen} />
        <Route path="/NewGoods/" exact component={NewGoods} />
       <Route path="/NewMenuItem/" exact component={NewMenuItem} />
       <Route path="/Statistic/" exact component={Statistic} /> 
-      */}    
-  /*     
-    if (this.state.screen == 'NewGoods'){
-      return (
-        <NewGoods
+      */}
+  /*
+  if (this.state.screen == 'NewGoods'){
+    return (
+      <NewGoods
+      props={this.state}>
+      </NewGoods>
+    );
+  }
+  if (this.state.screen == 'NewMenuItem') {
+    return (
+      <NewMenuItem
         props={this.state}>
-        </NewGoods>
-      );
-    }
-    if (this.state.screen == 'NewMenuItem') {
-      return (
-        <NewMenuItem
-          props={this.state}>
-        </NewMenuItem>
-      );
-    } 
-    if (this.state.screen == 'Statistic') {
-      return (
-        <Statistic
-          props={this.state}>
-        </Statistic>
-      );
-    } 
-  */
+      </NewMenuItem>
+    );
+  }
+  if (this.state.screen == 'Statistic') {
+    return (
+      <Statistic
+        props={this.state}>
+      </Statistic>
+    );
+  }
+*/

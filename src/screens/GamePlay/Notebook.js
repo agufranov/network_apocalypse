@@ -4,6 +4,7 @@ import { Form1 } from "./Form1";
 import { Form2 } from "./Form2";
 import NotebookSVG from "../../assets/images/notebookSVG"
 import CableSVG from "../../assets/images/CableSVG"
+import { Animations } from "../../constants/Animations"
 
 const Notebook = ({
   isOpen,
@@ -14,16 +15,20 @@ const Notebook = ({
   const [currentStep, setCurrentStep] = useState(2)
   return (
     <>
-      {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants&&<Button onClick={onOpen} />}
+      {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants && <Button onClick={onOpen} />}
       <Box isOpen={isOpen}>
-        <NotebookSVG/>
-        {isWorking ? <>
-          {currentStep === 1 && <Form1 onSuccess={() => {console.log(1);setCurrentStep(2)}} />}
-          {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
-          {currentStep === 3 && 'Success!'}
-        </>
-          : <CableSVG/>
-        } 
+        <NotebookSVG />
+        <Wrapper>
+          <InnerWrapper>
+            {isWorking ? <>
+              {currentStep === 1 && <Form1 onSuccess={() => { console.log(1); setCurrentStep(2) }} />}
+              {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
+              {currentStep === 3 && 'Success!'}
+            </>
+              : <CableSVG />
+            }
+          </InnerWrapper>
+        </Wrapper>
       </Box>
     </>
   )
@@ -40,18 +45,36 @@ const Button = styled.div`
 `
 
 const Box = styled.div`
-  width: ${props => props.isOpen ? '50%' : '50px'};
-  height: ${props => props.isOpen ? '35%' : '50px'};
-  left: ${props => props.isOpen ? '25%' : '25%'};
-  bottom: ${props => props.isOpen ? '20%' : '25%'};
+  width: 50%;
+  height: 35%;
+  left: 25%;
+  bottom: 20%;
   background-color: #ACF;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
   z-index: 20;
-  transition: all ease 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  transform: ${props => props.isOpen ? 'translate3d(0, 0, 0) scale(1)' : 'translate3d(-53%, 60%, 0) scale(0.1)'};
+  transition: all ease ${Animations.duration}ms;
 `
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 28px 21px 6px 21px;
+  box-sizing: border-box;
+  z-index: 2000;
+`
+
+const InnerWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  position: relative;
+`
+
 export default Notebook;

@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import { themes } from "../../constants/Colors"
+import React from "react";
+import styled from "styled-components";
 import CloakroomSVG from "../../assets/images/CloakroomSVG"
 
 const Cloakroom = ({
@@ -39,15 +38,16 @@ const Button = styled.div`
 `
 
 const Box = styled.div`
-  width: ${props => props.isOpen ? '35%' : '25%'};
-  height: ${props => props.isOpen ? '50%' : '40%'};
-  right: ${props => props.isOpen ? '25%' : '25%'};
-  bottom: ${props => props.isOpen ?'15%': '20%'};
+  width: 35%;
+  height: 50%;
+  right: 25%;
+  bottom: 15%;
   background-color: transparent;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
   z-index: 20;
+  transform: ${props => props.isOpen ? 'translate3d(0, 0, 0) scale(1)' : 'translate3d(0, 0, 0) scale(0.1)'};
   transition: all ease 0.3s;
 `
 
