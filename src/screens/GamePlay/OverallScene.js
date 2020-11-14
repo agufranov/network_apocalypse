@@ -134,6 +134,7 @@ export default class OverallScene extends React.Component {
         >
           <OveralSceneSVG
             selectedDresses={selectedDresses}
+            isCommutatorActivated={isCommutatorActivated}
           ></OveralSceneSVG>
           <Cloakroom
             isOpen={scenes.cloakroom}

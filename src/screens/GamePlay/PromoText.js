@@ -16,7 +16,7 @@ export default class PromoText extends React.Component {
   componentDidMount(){
     setTimeout(()=>{
       this.setState({ 
-        background: '#000a',
+        background: '#000d',
         text: "Мир людей погрузился во тьму...",
         stage: 1,
         textColor: '#ddd'
