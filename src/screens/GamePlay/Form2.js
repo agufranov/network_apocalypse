@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import { Field, FormWrapper, IPRgx, MACRgx, createField, errorMsg } from "./Forms"
 import { pipe, set, lensProp, lensPath } from 'ramda'
 
@@ -104,26 +104,86 @@ export const ComplexForm = ({
 
 const createData = () => fields.reduce((o, { key }) => ({ ...o, [key]: createField() }), {})
 
+const Checks = ({
+    onSuccess
+}) => {
+    // const [checks, setChecks] = useState([[false, false, false], [false, false, false], [false, false, false]])
+    const checks = [[false, false, false], [false, false, false], [false, false, false]]
+    const [error, setError] = useState(false)
+
+    const check = (e, i, j) => {
+        checks[i][j] = e.target.checked
+        console.log(checks)
+    }
+
+    const validate = () => {
+        const isValid = checks.every((row, i) => row.every((cell, j) => cell === (i === j)))
+        setError(!isValid)
+        console.log(isValid)
+        if (isValid) {
+            onSuccess()
+        }
+    }
+
+    return (
+        <table className="checkbox-table">
+            <tbody>
+                <tr>
+                    <td>{error && 'ERROR'}</td>
+                    <td colspan="3" align="center">Выходы IED 1</td>
+                </tr>
+                <tr>
+                    <td>Выходы IED 2</td>
+                    {[0, 1, 2].map(i => <td>Выход {i + 1}</td>)}
+                </tr>
+                {[0, 1, 2].map(i => (
+                    <tr>
+                        <td>Выход {i + 1}</td>
+                        {[0, 1, 2].map(j => (
+                            <td>
+                                <input type="checkbox" onChange={(e) => check(e, i, j)} />
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+                <tr>
+                    <td></td>
+                    <td colspan="3">
+                        <button onClick={validate}>Сохранить</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    )
+}
+
 export const Form2 = ({
     onSuccess
 }) => {
-    const [state, setState] = useState(1)
+    const [state, setState] = useState(3)
     const [data1, setData1] = useState(createData())
     const [data2, setData2] = useState(createData())
     const [isValid1, setIsValid1] = useState(false)
     const [isValid2, setIsValid2] = useState(false)
+    const [connected, setConnected] = useState(false)
+    const [checked, setChecked] = useState(false)
     const onValidate = (isValid, num) => {
         if (isValid) setTimeout(() => setState(0), 300)
         if (num === 1) setIsValid1(isValid)
         if (num === 2) setIsValid2(isValid)
     }
     useEffect(() => {
-        if (isValid1 && isValid2) onSuccess()
+        if (isValid1 && isValid2) {
+            setConnected(true)
+            // setTimeout(onSuccess, 1000)
+        }
     }, [isValid1, isValid2])
     return (
         <div className="form2">
-            <button style={{ background: isValid1 ? 'green' : 'grey' }} onClick={() => setState(1)}>Устройство 1 ({isValid1 ? 'Valid!' : 'Not Valid'})</button>
-            <button style={{ background: isValid2 ? 'green' : 'grey' }} onClick={() => setState(2)}>Устройство 2 ({isValid2 ? 'Valid!' : 'Not Valid'})</button>
+            {state === 0 && <div className="form2-device" style={{ background: isValid1 ? 'green' : 'grey' }} onClick={() => setState(1)}>Устройство 1 ({isValid1 ? 'Valid!' : 'Not Valid'})</div>}
+            {state === 0 && <div className="form2-device form2-device--2" style={{ background: isValid2 ? 'green' : 'grey' }} onClick={() => setState(2)}>Устройство 2 ({isValid2 ? 'Valid!' : 'Not Valid'})</div>}
+            {state === 0 && connected && <button className="form2-connect-button" onClick={() => setState(3)}>Подписки GOOSE-сообщений</button>}
+            {state === 0 && checked && <button className="form2-send-button" onClick={() => setState(4)}>Отправить GOOSE</button>}
             {state === 1 && (
                 <ComplexForm
                     data={data1}
@@ -141,6 +201,9 @@ export const Form2 = ({
                     onClose={() => setState(0)}
                     onValidate={isValid => onValidate(isValid, 2)}
                 />
+            )}
+            {state === 3 && (
+                <Checks onSuccess={() => { setChecked(true); setState(0) }} />
             )}
         </div >
     )

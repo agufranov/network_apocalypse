@@ -666,18 +666,21 @@ transition: 2s;
 }
 
 button {
-  background: rgba(200, 186, 214, 0.4);
   padding: 5px 10px;
-  border: 1px solid blue;
-  border-radius: 4px;
   display: block;
+  background: yellow;
+  border: none;
+  border-radius: 0;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: -6px 6px 6px 0 black;
 }
 
 .form1, .form2 {
   /* z-index: 200;
-  width: 100%;
+  width: 100%; */
   height: 100%;
-  box-sizing: border-box; */
+  /* box-sizing: border-box; */
 }
 
 .form1 button {
@@ -725,4 +728,43 @@ button {
   background: darkslategray;
   position: absolute;
   top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form2-device {
+  width: 110px;
+  position: absolute;
+  padding: 10px;
+  top: 50px;
+  left: 20px;
+}
+
+.form2-device.form2-device--2 {
+  right: 20px;
+  left: auto;
+}
+
+.form2-connect-button {
+  position: absolute;
+  bottom: 80px;
+  left: calc(50% - 150px);
+  width: 300px;
+}
+
+.form2-send-button {
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 180px);
+  width: 360px;
+}
+
+.checkbox-table {
+  width: 100%;
+  height: 100%;
+}
+
+input[type=checkbox] {
+  width: 20px;
+  height: 20px;
 }
