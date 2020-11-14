@@ -10,7 +10,7 @@ import PromoText from "./PromoText";
 import OveralSceneSVG from "../../assets/images/location1-01"
 import {lay} from "../../constants/Layout"
 
-const ALL_DRESSES = ['hat', 'shoes']
+const ALL_DRESSES = ['hat', 'shoes', 'pants']
 
 export default class OverallScene extends React.Component {
   constructor(props) {
@@ -28,11 +28,16 @@ export default class OverallScene extends React.Component {
         commutator: false
         // commutator: true
       },
-      // selectedDresses: {},
       selectedDresses: {
+        hat: false,
+        shoes: false
+      },
+     /*  
+     selectedDresses: {
         hat: true,
         shoes: true
       },
+      */
       isNotebookOnceOpened: false,
       // isNotebookOnceOpened: true,
       isCommutatorActivated: false,
@@ -117,9 +122,6 @@ export default class OverallScene extends React.Component {
         ref={this.containerRef}
         style={{ 
           backgroundColor: themes.dark.allBackground,
-         
-        //height: lay.window.height,
-        //width: lay.window.height,
              }}
       >
         {isStart && <PromoText endStart={() => this.endStart()}/>}

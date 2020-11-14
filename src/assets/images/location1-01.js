@@ -7,7 +7,7 @@ export default class OveralSceneSVG extends React.Component {
 	}
 
 	render() {
-		let noteBookXY = (this.props.selectedDresses.hat && this.props.selectedDresses.shoes) ? 'M764.7,2694.8' :'M864.7,2994.8'
+		let noteBookXY = (this.props.selectedDresses.hat && this.props.selectedDresses.shoes && this.props.selectedDresses.pants) ? 'M764.7,2694.8' :'M864.7,2994.8'
 		return (    
         <div style={{padding: 0, marginTop: 0, marginLeft: 0, height: "100%", weight: "100%"}}>	
 
@@ -11572,7 +11572,7 @@ gCpmbuBNiAAkBqA+g//Z" transform="matrix(1 0 0 1 1189 1189)">
 			{/* лого IBM */}
 			
 				<g 
-				opacity={(this.props.selectedDresses.hat && this.props.selectedDresses.shoes)?"0.46":"0"} 
+				opacity={(this.props.selectedDresses.hat && this.props.selectedDresses.shoes && this.props.selectedDresses.pants)?"0.46":"0"} 
 				style={{
 					transition: "2s",
 					}}
