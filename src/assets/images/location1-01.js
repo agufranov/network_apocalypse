@@ -32,6 +32,8 @@ export default class OveralSceneSVG extends React.Component {
 
 	render() {
 		let noteBookXY = (this.props.selectedDresses.hat && this.props.selectedDresses.shoes && this.props.selectedDresses.pants) ? 'M764.7,2694.8' :'M864.7,2994.8'
+		
+		//окна
 		let color1 = this.state.allWindows ? '#001' : '#FCEE21'
 		let color2 = this.state.allWindows ? '#001' : '#FCEE21'
 		let color3 = this.state.allWindows ? '#001' : '#FCEE21'
@@ -48,6 +50,12 @@ export default class OveralSceneSVG extends React.Component {
 		let color14 = this.state.allWindows2 ? '#001' : '#FCEE21'
 		let color15 = this.state.allWindows2 ? '#001' : '#FCEE21'
 		let color16 = this.state.allWindows2 ? '#001' : '#FCEE21'
+
+		//цвет огня
+		let colorF1 = this.state.allWindows2 || this.state.allWindows ? '#B33600' : 'transparent'
+		let colorF2 = this.state.allWindows2 && this.state.allWindows ? '#F7931E' : 'transparent'
+		let colorF3 = this.state.allWindows2 ? '#FFFF00' : 'transparent'
+
 		return (    
         <div style={{padding: 0, marginTop: 0, marginLeft: 0, height: "100%", weight: "100%"}}>	
 
@@ -627,12 +635,12 @@ gCpmbuBNiAAkBqA+g//Z" transform="matrix(1 0 0 1 1189 1189)">
 				c-10.2,20.1,23.5,35.4,28.8,57.3c-21.2,15.2-61.7,0.8-69.9,25.5c-5.2,15.7,10.9,30.3,26.3,36.3c15.4,6,33.6,9.7,42.4,23.7
 				c11.1,17.7-0.8,42.6-19.2,52.6c-53.4,29.1-159.5,3.6-187.1-52.8C1799.7,913.2,1929.7,906.5,1974,881.6z"/>
 			<g clip-path="url(#SVGID_2_)">
-				<path fill="#B33600" d="M1787.4,1154.1c20-48.4,40-96.7,60-145.1c5.9,18.1,11.8,36.2,17.7,54.3
+					<path fill={colorF1} style={{ transition: "all 1s cubic-bezier(0.26, 1.39, 0.86, -0.49) 0s"}} d="M1787.4,1154.1c20-48.4,40-96.7,60-145.1c5.9,18.1,11.8,36.2,17.7,54.3
 					c27.1-55.6,71.4-102.7,125.2-133.2c-7.3,61.3-11,123-10.9,184.7c21.2-2.4,42.3,16.3,42.5,37.6c9.7-5.9,18.3-13.5,25.5-22.2
 					c-9.6,39.9,11.7,81.5,7.1,122.3c-6.4,56.6-60.2,95.9-113.5,115.8c-45.5,17-94.2,25.3-142.8,24.4c-59.6-1.1-114.6-42.6-106-108.5
 					c8.1-61.4,71.6-102.7,80-165.8C1777.8,1130,1782.5,1142.2,1787.4,1154.1z"/>
 			</g>
-			<path clip-path="url(#SVGID_2_)" fill="#FFFF00" stroke="#F7931E" stroke-width="20" stroke-miterlimit="10" d="M1797.8,1229
+					<path clip-path="url(#SVGID_2_)" fill={colorF3} stroke={colorF2} style={{ transition: "all 1s cubic-bezier(0.26, 1.39, 0.86, -0.49) 0s" }} stroke-width="20" stroke-miterlimit="10" d="M1797.8,1229
 				c0,7.6,0.1,15.1,0.1,22.7c26.6-19.5,46.3-48,55.1-79.8c-0.3,19-0.6,38.1-0.8,57.1c14.4-3.1,16-22.3,18.1-36.9
 				c3.5-24.1,18-46.5,38.7-59.5c-9.6,17.7-19.4,38.6-11.7,57.2c3.1,7.6,9,13.9,12.2,21.4s2.7,18-4.3,22.2c11.3-4.2,21-12.4,27-22.8
 				c11.4,16.9,23.3,35.5,21.7,55.8c-1.7,20.6-17,37.5-33.6,49.7c-33.8,24.9-106.5,54-145.9,25.6c-14.5-10.4-16.4-25-14.1-42.1
