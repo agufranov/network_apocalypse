@@ -30,7 +30,8 @@ export default class OverallScene extends React.Component {
       },
       selectedDresses: {
         hat: false,
-        shoes: false
+        shoes: false,
+        pants: false,
       },
      /*  
      selectedDresses: {

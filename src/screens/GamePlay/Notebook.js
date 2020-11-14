@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Form1 } from "./Form1";
 import { Form2 } from "./Form2";
+import NotebookSVG from "../../assets/images/notebookSVG"
 
 const Notebook = ({
   isOpen,
@@ -12,15 +13,16 @@ const Notebook = ({
   const [currentStep, setCurrentStep] = useState(2)
   return (
     <>
-      {selectedDresses.hat && selectedDresses.shoes&&<Button onClick={onOpen} />}
+      {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants&&<Button onClick={onOpen} />}
       <Box isOpen={isOpen}>
+        <NotebookSVG/>
         {isWorking ? <>
           {currentStep === 1 && <Form1 onSuccess={() => {console.log(1);setCurrentStep(2)}} />}
           {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
           {currentStep === 3 && 'Success!'}
         </>
-          : 'Not working'
-        }
+          : <p>'Not working'</p>
+        } 
       </Box>
     </>
   )
@@ -37,15 +39,18 @@ const Button = styled.div`
 `
 
 const Box = styled.div`
-  width: ${props => props.isOpen ? '400px' : '50px'};
-  height: ${props => props.isOpen ? '50%' : '50px'};
-  left: ${props => props.isOpen ? '13%' : '25%'};
-  bottom: ${props => props.isOpen ? '10%' : '25%'};
+  width: ${props => props.isOpen ? '50%' : '50px'};
+  height: ${props => props.isOpen ? '35%' : '50px'};
+  left: ${props => props.isOpen ? '25%' : '25%'};
+  bottom: ${props => props.isOpen ? '20%' : '25%'};
   background-color: #ACF;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};
   pointer-events: ${props => props.isOpen ? 'all' : 'none'};
   z-index: 20;
   transition: all ease 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 export default Notebook;
