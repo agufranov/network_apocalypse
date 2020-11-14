@@ -11,8 +11,9 @@ const Notebook = ({
   onOpen,
   isWorking,
   selectedDresses,
+  onIPsCorrect
 }) => {
-  const [currentStep, setCurrentStep] = useState(2)
+  const [currentStep, setCurrentStep] = useState(1)
   return (
     <>
       {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants && <Button onClick={onOpen} />}
@@ -21,7 +22,12 @@ const Notebook = ({
         <Wrapper>
           <InnerWrapper>
             {isWorking ? <>
-              {currentStep === 1 && <Form1 onSuccess={() => { console.log(1); setCurrentStep(2) }} />}
+              {currentStep === 1 &&
+                <Form1
+                  onSuccess={() => { console.log(1); setCurrentStep(2) }}
+                  onIPsCorrect={onIPsCorrect}
+                />
+              }
               {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
               {currentStep === 3 && 'Success!'}
             </>

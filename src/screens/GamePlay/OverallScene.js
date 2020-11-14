@@ -184,6 +184,7 @@ export default class OverallScene extends React.Component {
               onOpen={this.openNotebook}
               isWorking={isCommutatorActivated}
               selectedDresses={selectedDresses}
+              onIPsCorrect={() => {}}
             />
           }
           <Commutator isOpen={scenes.commutator} />

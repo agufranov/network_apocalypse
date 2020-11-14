@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Field, FormWrapper, IPRgx, createField, errorMsg } from "./Forms";
 
 export const Form1 = ({
-    onSuccess
+    onSuccess,
+    onIPsCorrect
 }) => {
     const [ip1, setIp1] = useState(createField())
     const [mask1, setMask1] = useState(createField())
@@ -52,6 +53,10 @@ export const Form1 = ({
         setIp2({ ...ip2, error: errIp2 })
         setMask1({ ...mask1, error: errMask1 })
         setMask2({ ...mask2, error: errMask2 })
+
+        if (!errIp1 && !errIp2) {
+            onIPsCorrect()
+        }
 
         if (!errIp1 && !errIp2 && !errMask1 && !errMask2) {
             setIsSubmitting(true)
