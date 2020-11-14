@@ -3,9 +3,10 @@ import styled, { css } from "styled-components";
 
 const Overlay = ({
     isOpen,
-    onClose
+    onClose,
+    isLoading
 }) => {
-    return <Main isOpen={isOpen} onClick={onClose} />
+    return <Main isOpen={isOpen} onClick={() => !isLoading && onClose()} />
 }
 
 const Main = styled.div`

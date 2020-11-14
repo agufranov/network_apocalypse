@@ -8,6 +8,7 @@
     "google-map-react": "^1.1.4",
     "material-ui-slider": "^3.0.8",
     "pure-react-carousel": "^1.21.1",
+    "ramda": "^0.27.1",
     "react": "^16.8.6",
     "react-app-rewired": "2.1.3",
     "react-dom": "^16.8.6",
