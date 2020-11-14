@@ -34,27 +34,29 @@ export default class OveralSceneSVG extends React.Component {
 		let noteBookXY = (this.props.selectedDresses.hat && this.props.selectedDresses.shoes && this.props.selectedDresses.pants) ? 'M764.7,2694.8' :'M864.7,2994.8'
 		
 		//окна
-		let color1 = this.state.allWindows ? '#001' : '#FCEE21'
-		let color2 = this.state.allWindows ? '#001' : '#FCEE21'
-		let color3 = this.state.allWindows ? '#001' : '#FCEE21'
-		let color4 = this.state.allWindows ? '#001' : '#FCEE21'
-		let color5 = this.state.allWindows ? '#001' : '#FCEE21'
-		let color6 = true ? '#001' : '#FCEE21'
-		let color7 = this.state.allWindows ? '#001' : '#FCEE21'
-		let color8 = this.state.allWindows ? '#001' : '#FCEE21'
-		let color9 = true ? '#001' : '#FCEE21'
-		let color10 = true ? '#001' : '#FCEE21'
-		let color11 = this.state.allWindows2 ? '#001' : '#FCEE21'
-		let color12 = this.state.allWindows2 ? '#001' : '#FCEE21'
-		let color13 = this.state.allWindows2 ? '#001' : '#FCEE21'
-		let color14 = this.state.allWindows2 ? '#001' : '#FCEE21'
-		let color15 = this.state.allWindows2 ? '#001' : '#FCEE21'
-		let color16 = this.state.allWindows2 ? '#001' : '#FCEE21'
+		let color1 = this.props.quizStepComplete > 0 ?'#FC8521':(this.state.allWindows ? '#001' : '#FCEE21')
+		let color2 = this.props.quizStepComplete > 1 ? '#FC9521' : (this.state.allWindows ? '#001' : '#FCEE21')
+		let color3 = this.props.quizStepComplete > 2 ? '#FCa521' : (this.state.allWindows ? '#001' : '#FCEE21')
+		let color4 = this.props.quizStepComplete > 3 ? '#FCa521' : (this.state.allWindows ? '#001' : '#FCEE21')
+		let color5 = this.props.quizStepComplete > 4 ? '#FCb521' : (this.state.allWindows ? '#001' : '#FCEE21')
+		let color6 = this.props.quizStepComplete > 5 ? '#FCEE21' : '#001'
+		let color7 = this.props.quizStepComplete > 6 ? '#FCb521' : (this.state.allWindows ? '#001' : '#FCEE21')
+		let color8 = this.props.quizStepComplete > 7 ? '#FCc521' : (this.state.allWindows ? '#001' : '#FCEE21')
+		let color9 = this.props.quizStepComplete > 8 ? '#FCEE21' : '#001'
+		let color10 = this.props.quizStepComplete > 9 ? '#FCEE21' : '#001'
+		let color11 = this.props.quizStepComplete > 10 ? '#FCc521' : (this.state.allWindows2 ? '#001' : '#FCEE21')
+		let color12 = this.props.quizStepComplete > 11 ? '#FCd521' : (this.state.allWindows2 ? '#001' : '#FCEE21')
+		let color13 = this.props.quizStepComplete > 12 ? '#FCd521' : (this.state.allWindows2 ? '#001' : '#FCEE21')
+		let color14 = this.props.quizStepComplete > 13 ? '#FCe521' : (this.state.allWindows2 ? '#001' : '#FCEE21')
+		let color15 = this.props.quizStepComplete > 14 ? '#FCe521' : (this.state.allWindows2 ? '#001' : '#FCEE21')
+		let color16 = this.props.quizStepComplete > 15 ? '#FCf521' : (this.state.allWindows2 ? '#001' : '#FCEE21')
 
 		//цвет огня
-		let colorF1 = this.state.allWindows2 || this.state.allWindows ? '#B33600' : 'transparent'
-		let colorF2 = this.state.allWindows2 && this.state.allWindows ? '#F7931E' : 'transparent'
-		let colorF3 = this.state.allWindows2 ? '#FFFF00' : 'transparent'
+		let colorF1 = (this.state.allWindows2 || this.state.allWindows) && this.props.kz ? '#B33600' : 'transparent'
+		let colorF2 = (this.state.allWindows2 && this.state.allWindows) && this.props.kz ? '#F7931E' : 'transparent'
+		let colorF3 = this.state.allWindows2 && this.props.kz ? '#FFFF00' : 'transparent'
+
+		let colorKz = this.props.kz ? '#FFFF00' : '#000'
 
 		return (    
         <div style={{padding: 0, marginTop: 0, marginLeft: 0, height: "100%", weight: "100%"}}>	
@@ -13000,6 +13002,7 @@ gCpmbuBNiAAkBqA+g//Z" transform="matrix(1 0 0 1 1189 1189)">
 		<g>
 			<g>
 				<g>
+				{this.props.kz&&
 					<g>
 						<g>
 							<path fill="#C7A331" d="M1802.7,1354.6c0.3-0.4,0.7-0.7,0.9-1c0.2-0.3,0.4-0.6,0.5-0.8c0.2-0.4,0.3-0.6,0.4-0.8
@@ -13324,6 +13327,7 @@ gCpmbuBNiAAkBqA+g//Z" transform="matrix(1 0 0 1 1189 1189)">
 								c1.3,0.3,2.6,0.7,3.9,1C972.1,936.8,966.2,933.7,967.3,934.9z"/>
 						</g>
 					</g>
+				}
 				</g>
 			</g>
 		</g>

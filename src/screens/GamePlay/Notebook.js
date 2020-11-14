@@ -19,7 +19,8 @@ const Notebook = ({
   onValid1,
   onValid2,
   onGoose,
-  onQuizStepComplete
+  onQuizStepComplete,
+  onFinish
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [quizStep, setQuizStep] = useState(0)
@@ -56,7 +57,7 @@ const Notebook = ({
                   questions={quizQuestions}
                   step={quizStep}
                   onStepComplete={onStepComplete}
-                  onFinish={() => alert('Finish')}
+                  onFinish={() => onFinish()}
                 />
               }
             </>

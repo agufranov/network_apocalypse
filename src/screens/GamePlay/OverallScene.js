@@ -14,6 +14,7 @@ import Lan1SVG from "../../assets/images/Lan1SVG"
 import Lan2SVG from "../../assets/images/Lan2SVG"
 import BRMZSVG from "../../assets/images/BRMZSVG"
 import GooseSVG from "../../assets/images/GooseSVG"
+import gas from "../../assets/images/gas.svg"
 
 const ALL_DRESSES = ['hat', 'shoes', 'pants']
 
@@ -21,8 +22,8 @@ export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      // isStart: true,
-      isStart: false,
+       isStart: true,
+      //isStart: false,
       overlay: false,
       // overlay: true,
       overlayLoading: false,
@@ -50,7 +51,10 @@ export default class OverallScene extends React.Component {
       // onIPsCorrect: true,
       // onValidBrmz1: true,
       // onValidBrmz2: true,
-      // goose: false
+      // goose: false,
+      kz: true,
+      quizStepComplete: 0,
+      isFinish: false
     }
   }
 
@@ -119,7 +123,9 @@ export default class OverallScene extends React.Component {
 
   onGoose = () => {
     this.setState({ goose: true })
-    setTimeout(() => this.setState({ goose: false }), 2300)
+    setTimeout(() => {
+      this.setState({ goose: false, kz: false })
+      }, 2300)
   }
 
   render() {
@@ -131,7 +137,10 @@ export default class OverallScene extends React.Component {
       isCommutatorActivated,
       isNotebookOnceOpened,
       isStart,
-      onIPsCorrect
+      onIPsCorrect,
+      kz,
+      quizStepComplete,
+      isFinish
     } = this.state
 
     return (
@@ -156,6 +165,8 @@ export default class OverallScene extends React.Component {
           <OveralSceneSVG
             selectedDresses={selectedDresses}
             isCommutatorActivated={isCommutatorActivated}
+            kz={kz}
+            quizStepComplete={quizStepComplete}
           ></OveralSceneSVG>
           <Cloakroom
             isOpen={scenes.cloakroom}
@@ -177,7 +188,11 @@ export default class OverallScene extends React.Component {
               onValid1={() => this.setState({ onValidBrmz1: true})}
               onValid2={() => this.setState({ onValidBrmz2: true })}
               onGoose={this.onGoose}
-              onQuizStepComplete={(step, num, isRight) => console.log(step, num, isRight)}
+              onQuizStepComplete={(step, num, isRight) => {
+                console.log(step, num, isRight)
+                this.setState({ quizStepComplete: step})
+                }}
+              onFinish={()=>{this.setState({isFinish: true})}}
             />
           }
           <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />
@@ -186,6 +201,11 @@ export default class OverallScene extends React.Component {
           <BRMZSVG leftPosition={this.state.onValidBrmz1 ? '20%' : '-20%'} topPosition={this.state.onValidBrmz1 ? '10%' : '-10%'} />
           <BRMZSVG leftPosition={this.state.onValidBrmz2 ? '70%': '20%'} topPosition={this.state.onValidBrmz2 ? '17%' : '-10%'} />
           <GooseSVG goose={this.state.goose} leftPosition={this.state.goose ? '20%': '70%'} topPosition={this.state.goose ? '10%' : '17%'} />
+          {isFinish&&
+          <LastDiv>
+            <img src={gas}  />
+          </LastDiv>
+          }
           <Overlay isOpen={overlay} isLoading={overlayLoading} onClose={this.closeAll} />
         </Main>
       </Container>
@@ -213,3 +233,15 @@ const Main = styled.div`
   justify-content: center;
   box-shadow: inset 0 0 20px 4px black;
 `;
+
+const LastDiv = styled.div`
+  position: absolute;
+  top 8%;
+  right: 30%;
+  width: 10%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 222;
+`
