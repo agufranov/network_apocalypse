@@ -107,29 +107,30 @@ const createData = () => fields.reduce((o, { key }) => ({ ...o, [key]: createFie
 const Checks = ({
     onSuccess
 }) => {
-    // const [checks, setChecks] = useState([[false, false, false], [false, false, false], [false, false, false]])
-    const checks = [[false, false, false], [false, false, false], [false, false, false]]
+    const [checks, setChecks] = useState([[false, false, false], [false, false, false], [false, false, false]])
+    // const checks = [[false, false, false], [false, false, false], [false, false, false]]
     const [error, setError] = useState(false)
 
     const check = (e, i, j) => {
-        checks[i][j] = e.target.checked
-        console.log(checks)
+        const newChecks = [...checks]
+        newChecks[i][j] = e.target.checked
+        setChecks(newChecks)
     }
 
     const validate = () => {
         const isValid = checks.every((row, i) => row.every((cell, j) => cell === (i === j)))
         setError(!isValid)
-        console.log(isValid)
         if (isValid) {
             onSuccess()
         }
     }
 
-    return (
+    return (<>
+        {error && <div class="checks-error" onClick={() => setError(false)}><div class="checks-error-inner">Соедините входы и выходы правильно!</div></div>}
         <table className="checkbox-table">
             <tbody>
                 <tr>
-                    <td>{error && 'ERROR'}</td>
+                    <td></td>
                     <td colspan="3" align="center">Выходы IED 1</td>
                 </tr>
                 <tr>
@@ -154,13 +155,13 @@ const Checks = ({
                 </tr>
             </tbody>
         </table>
-    )
+    </>)
 }
 
 export const Form2 = ({
     onSuccess
 }) => {
-    const [state, setState] = useState(3)
+    const [state, setState] = useState(0)
     const [data1, setData1] = useState(createData())
     const [data2, setData2] = useState(createData())
     const [isValid1, setIsValid1] = useState(false)
