@@ -11,7 +11,7 @@ export default class Lan1SVG extends React.Component {
 		return ( 
 			<div style={{
 				position: 'absolute',
-				height: '7%',
+				height: this.props.onIPsCorrect ? '7%' : 0 ,
 				width: '5%',
 				left: '35%',
 				bottom: '2%',
