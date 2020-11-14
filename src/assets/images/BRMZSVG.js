@@ -7539,4 +7539,4 @@ export default class BRMZSVG extends React.Component {
 	</g>
 </g>
 </svg>
-</div>
+</div>)}}
