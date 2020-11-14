@@ -25,19 +25,20 @@ const Cloakroom = ({
 }
 
 const Button = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 25%;
+  height: 40%;
   right: 25%;
-  bottom: 25%;
-  background-color: red;
+  bottom: 20%;
+  background-color: transparent;
   position: absolute;
+  cursor: pointer;
 `
 
 const Box = styled.div`
-  width: ${props => props.isOpen ? '25%' : '50px'};
-  height: ${props => props.isOpen ? '50%' : '50px'};
-  right: ${props => props.isOpen ? '30%' : '25%'};
-  bottom: ${props => props.isOpen ? 0 : '25%'};
+  width: ${props => props.isOpen ? '25%' : '25%'};
+  height: ${props => props.isOpen ? '50%' : '40%'};
+  right: ${props => props.isOpen ? '25%' : '25%'};
+  bottom: ${props => props.isOpen ?'15%': '20%'};
   background-color: brown;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};

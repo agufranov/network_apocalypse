@@ -15,10 +15,10 @@ const Commutator = ({
 }
 
 const Box = styled.div`
-  width: ${props => props.isOpen ? '25%' : '50px'};
-  height: ${props => props.isOpen ? '50%' : '50px'};
-  right: ${props => props.isOpen ? '0' : '25%'};
-  top: ${props => props.isOpen ? '50%' : '25%'};
+  width: ${props => props.isOpen ? '50%' : '50px'};
+  height: ${props => props.isOpen ? '5%' : '10px'};
+  left: ${props => props.isOpen ? '25%' : '50%'};
+  bottom: ${props => props.isOpen ? '3%' : '20%'};
   background-color: green;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};

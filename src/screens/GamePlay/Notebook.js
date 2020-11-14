@@ -6,12 +6,13 @@ import { Form2 } from "./Form2";
 const Notebook = ({
   isOpen,
   onOpen,
-  isWorking
+  isWorking,
+  selectedDresses,
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   return (
     <>
-      <Button onClick={onOpen} />
+      {selectedDresses.hat && selectedDresses.shoes&&<Button onClick={onOpen} />}
       <Box isOpen={isOpen}>
         {isWorking ? 'Working!' : 'Not working'}
         {currentStep === 1 && <Form1 onSuccess={() => setCurrentStep(2)}/>}
@@ -23,19 +24,20 @@ const Notebook = ({
 }
 
 const Button = styled.div`
-  width: 50px;
-  height: 50px;
-  left: 25%;
-  top: 25%;
-  background-color: #FFAAEE;
+  width: 15%;
+  height: 12%;
+  left: 13%;
+  bottom: 10%;
+  background-color: transparent;
   position: absolute;
+  cursor: pointer;
 `
 
 const Box = styled.div`
   width: ${props => props.isOpen ? '400px' : '50px'};
   height: ${props => props.isOpen ? '50%' : '50px'};
-  left: ${props => props.isOpen ? '30%' : '25%'};
-  top: ${props => props.isOpen ? '10%' : '25%'};
+  left: ${props => props.isOpen ? '13%' : '25%'};
+  bottom: ${props => props.isOpen ? '10%' : '25%'};
   background-color: #FF88EE;
   position: absolute;
   opacity: ${props => props.isOpen ? 1 : 0};

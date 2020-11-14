@@ -128,7 +128,9 @@ export default class OverallScene extends React.Component {
               alignSelf: "center"
              }}
         >
-          <OveralSceneSVG></OveralSceneSVG>
+          <OveralSceneSVG
+            selectedDresses={selectedDresses}
+          ></OveralSceneSVG>
           <Cloakroom
             isOpen={scenes.cloakroom}
             onOpen={() => this.openScene('cloakroom')}
@@ -142,6 +144,7 @@ export default class OverallScene extends React.Component {
               isOpen={scenes.notebook}
               onOpen={this.openNotebook}
               isWorking={isCommutatorActivated}
+              selectedDresses={selectedDresses}
             />
           }
           <Commutator isOpen={scenes.commutator} />
