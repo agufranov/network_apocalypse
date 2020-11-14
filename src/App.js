@@ -13,11 +13,12 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      screen: 'OverallScene',
+      screen: 'LogIn',
       route: this.route(),
       token: '',
       menuOpenStatus: 0,
       menuOpenStatusToggle: this.menuOpenStatusToggle(),
+      username: 'Олег'
     }
   }
 
@@ -41,7 +42,7 @@ class App extends React.Component {
 
     return (
       <Container>
-        { this.state.screen === 'LogIn' && <LogIn {...this.state} route={(u) => this.route(u)} />}
+        { this.state.screen === 'LogIn' && <LogIn {...this.state} username={this.state.username} onChange={username => this.setState({ username })} onLogin={() => this.setState({ screen: 'OverallScene' })} route={(u) => this.route(u)} />}
         { this.state.screen === 'OverallScene' && <OverallScene props={this.state} />}
         { this.state.screen === 'Lavels' && <Lavels props={this.state} />}
 

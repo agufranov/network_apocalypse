@@ -9,12 +9,26 @@ class LogIn extends React.Component {
     }
   }
 
-  render(){
+  render() {
     return (
       <Container
-        style={{ backgroundColor: themes.dark.allBackground}}
+        className="login"
+        style={{ backgroundColor: themes.dark.allBackground, fontSize: 20, fontWeight: 'bold' }}
       >
-
+        <form
+          style={{ position: 'absolute', top: 0, bottom: 0, background: '#606060', width: 400, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
+          onSubmit={e => {
+            e.preventDefault()
+            this.props.onLogin()
+          }}
+        >
+          <img src="./logo.png" style={{ width: '100%', marginBottom: 50 }} />
+          <div>
+            <div>Введи свое имя:</div>
+            <input value={this.props.username} onChange={e => this.props.onChange(e.target.value)} />
+          </div>
+          <button>Зажечь свет</button>
+        </form>
       </Container>
     );
   }

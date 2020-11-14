@@ -801,3 +801,13 @@ input[type=checkbox] {
 .notebook {
   color: white;
 }
+
+.login input {
+  background: transparent;
+  border: 1px solid #444;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  padding: 14px;
+}

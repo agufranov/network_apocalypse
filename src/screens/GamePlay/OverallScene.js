@@ -22,7 +22,7 @@ export default class OverallScene extends React.Component {
     super(props)
     this.state = {
       // isStart: true,
-      isStart: false,
+      isStart: true,
       overlay: false,
       // overlay: true,
       overlayLoading: false,
