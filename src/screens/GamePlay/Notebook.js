@@ -5,6 +5,9 @@ import { Form2 } from "./Form2";
 import NotebookSVG from "../../assets/images/notebookSVG"
 import CableSVG from "../../assets/images/CableSVG"
 import { Animations } from "../../constants/Animations"
+import { Quiz } from './Quiz'
+import { over, inc, lensProp } from 'ramda'
+import { quizQuestions } from "./quizQuestions"
 
 const Notebook = ({
   isOpen,
@@ -14,10 +17,11 @@ const Notebook = ({
   onIPsCorrect
 }) => {
   const [currentStep, setCurrentStep] = useState(2)
+  const [quizStep, setQuizStep] = useState(0)
   return (
     <>
       {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants && <Button onClick={onOpen} />}
-      <Box isOpen={isOpen}>
+      <Box className="notebook" isOpen={isOpen}>
         <NotebookSVG />
         <Wrapper>
           <InnerWrapper>
@@ -29,7 +33,14 @@ const Notebook = ({
                 />
               }
               {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
-              {currentStep === 3 && 'Success!'}
+              {currentStep === 3 &&
+                <Quiz
+                  questions={quizQuestions}
+                  step={quizStep}
+                  changeStep={() => setQuizStep(quizStep + 1)}
+                  onFinish={() => alert('Finish')}
+                />
+              }
             </>
               : <CableSVG />
             }

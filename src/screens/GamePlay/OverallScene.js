@@ -8,9 +8,7 @@ import Notebook from "./Notebook";
 import Commutator from "./Commutator";
 import PromoText from "./PromoText";
 import OveralSceneSVG from "../../assets/images/location1-01"
-import { Quiz } from './Quiz'
 import {lay} from "../../constants/Layout"
-import { over, inc, lensProp } from 'ramda'
 
 const ALL_DRESSES = ['hat', 'shoes', 'pants']
 
@@ -18,7 +16,6 @@ export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      quizStep: 0,
       // isStart: true,
       isStart: false,
       // overlay: false,
@@ -109,27 +106,6 @@ export default class OverallScene extends React.Component {
 
   isDressed = () => ALL_DRESSES.every(dress => this.state.selectedDresses[dress])
 
-  quizQuestions = [
-    {
-      text: 'Ответ на вопрос 1 - А? Нужно ответить А',
-      answers: [
-        { text: 'A, правильный ответ', isRight: true },
-        { text: 'Другой ответ' },
-        { text: 'Ответ C' },
-        { text: 'Затрудняюсь' },
-      ]
-    },
-    {
-      text: 'Ответ на вопрос №2. Правильный ответ - B',
-      answers: [
-        { text: 'Неправильный ответ' },
-        { text: 'B, правильный ответ', isRight: true },
-        { text: 'Неправильный ответ' },
-        { text: 'Другой ответ' },
-      ]
-    }
-  ]
-
   render() {
     const {
       scenes,
@@ -163,12 +139,6 @@ export default class OverallScene extends React.Component {
             selectedDresses={selectedDresses}
             isCommutatorActivated={isCommutatorActivated}
           ></OveralSceneSVG>
-          <Quiz
-            questions={this.quizQuestions}
-            step={this.state.quizStep}
-            changeStep={() => this.setState(over(lensProp('quizStep'), inc))}
-            onFinish={() => alert('Finish')}
-          />
           <Cloakroom
             isOpen={scenes.cloakroom}
             onOpen={() => this.openScene('cloakroom')}

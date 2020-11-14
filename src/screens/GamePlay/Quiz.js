@@ -27,7 +27,7 @@ export const Quiz = ({
     }
     return (
         <div className="quiz">
-            <div>{step + 1} / {questions.length}</div>
+            <div>Вопрос {step + 1} / {questions.length}</div>
             <div>{question.text}</div>
             <div className="quiz-buttons">
                 {question.answers.map((answer, i) => (

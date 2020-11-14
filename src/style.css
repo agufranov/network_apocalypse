@@ -693,22 +693,25 @@ button {
 }
 
 .quiz {
-  position: absolute;
-  width: 200px;
-  top: 20px;
-  left: 200px;
-  background: #2d90c9dd;
+  /* background: #2d90c9dd; */
+  background: darkslategray;
   text-align: center;
+  font-size: 10px;
 }
 
 .quiz-buttons {
   display: flex;
   flex-wrap: wrap;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-left: 5px;
 }
 
 .quiz-button {
   width: 100%;
   margin: 5px;
+  font-size: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -761,12 +764,17 @@ button {
 
 .checkbox-table {
   width: 100%;
-  height: 100%;
+  font-size: 10px;
+  margin-left: 10px;
 }
 
 input[type=checkbox] {
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
+}
+
+.checks-button {
+  font-size: 12px;
 }
 
 .checks-error {
@@ -788,4 +796,8 @@ input[type=checkbox] {
   padding: 8px;
   color: red;
   background: black;
+}
+
+.notebook {
+  color: white;
 }

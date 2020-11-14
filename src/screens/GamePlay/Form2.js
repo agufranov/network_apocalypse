@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Field, FormWrapper, IPRgx, MACRgx, createField, errorMsg } from "./Forms"
-import { pipe, set, lensProp, lensPath } from 'ramda'
+import { pipe, set, lensProp, lensPath, equals } from 'ramda'
 
 const fields = [
     { label: 'Имя GCB', key: 'gcb' },
@@ -104,21 +104,43 @@ export const ComplexForm = ({
 
 const createData = () => fields.reduce((o, { key }) => ({ ...o, [key]: createField() }), {})
 
+const verifyChecks = checks => {
+    const oi = {}
+    const oj = {}
+    let isValid = true;
+    checks.forEach((row, i) => row.forEach((cell, j) => {
+        if (cell) {
+            if (oi[i] || oj[j]) isValid = false
+            oi[i] = true
+            oj[j] = true
+        }
+    }))
+    if (Object.keys(oi).length < checks.length || Object.keys(oj).length < checks.length) isValid = false
+    return isValid
+}
+
 const Checks = ({
     onSuccess
 }) => {
-    const [checks, setChecks] = useState([[false, false, false], [false, false, false], [false, false, false]])
+    const [checks1, setChecks1] = useState([[false, false, false], [false, false, false], [false, false, false]])
+    const [checks2, setChecks2] = useState([[false, false, false], [false, false, false], [false, false, false]])
     // const checks = [[false, false, false], [false, false, false], [false, false, false]]
     const [error, setError] = useState(false)
 
-    const check = (e, i, j) => {
-        const newChecks = [...checks]
+    const check1 = (e, i, j) => {
+        const newChecks = [...checks1]
         newChecks[i][j] = e.target.checked
-        setChecks(newChecks)
+        setChecks1(newChecks)
+    }
+
+    const check2 = (e, i, j) => {
+        const newChecks = [...checks2]
+        newChecks[i][j] = e.target.checked
+        setChecks2(newChecks)
     }
 
     const validate = () => {
-        const isValid = checks.every((row, i) => row.every((cell, j) => cell === (i === j)))
+        const isValid = verifyChecks(checks1) && verifyChecks(checks2) && equals(checks1, checks2)
         setError(!isValid)
         if (isValid) {
             onSuccess()
@@ -127,6 +149,28 @@ const Checks = ({
 
     return (<>
         {error && <div class="checks-error" onClick={() => setError(false)}><div class="checks-error-inner">Соедините входы и выходы правильно!</div></div>}
+        <table className="checkbox-table">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td colspan="3" align="center">Выходы IED 2</td>
+                </tr>
+                <tr>
+                    <td>Выходы IED 1</td>
+                    {[0, 1, 2].map(i => <td>Выход {i + 1}</td>)}
+                </tr>
+                {[0, 1, 2].map(i => (
+                    <tr>
+                        <td>Выход {i + 1}</td>
+                        {[0, 1, 2].map(j => (
+                            <td>
+                                <input type="checkbox" onChange={(e) => check1(e, i, j)} />
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
         <table className="checkbox-table">
             <tbody>
                 <tr>
@@ -142,26 +186,21 @@ const Checks = ({
                         <td>Выход {i + 1}</td>
                         {[0, 1, 2].map(j => (
                             <td>
-                                <input type="checkbox" onChange={(e) => check(e, i, j)} />
+                                <input type="checkbox" onChange={(e) => check2(e, i, j)} />
                             </td>
                         ))}
                     </tr>
                 ))}
-                <tr>
-                    <td></td>
-                    <td colspan="3">
-                        <button onClick={validate}>Сохранить</button>
-                    </td>
-                </tr>
             </tbody>
         </table>
+        <button class="checks-button" onClick={validate}>Сохранить</button>
     </>)
 }
 
 export const Form2 = ({
     onSuccess
 }) => {
-    const [state, setState] = useState(0)
+    const [state, setState] = useState(1)
     const [data1, setData1] = useState(createData())
     const [data2, setData2] = useState(createData())
     const [isValid1, setIsValid1] = useState(false)
