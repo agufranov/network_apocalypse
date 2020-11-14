@@ -14,10 +14,13 @@ const Notebook = ({
     <>
       {selectedDresses.hat && selectedDresses.shoes&&<Button onClick={onOpen} />}
       <Box isOpen={isOpen}>
-        {isWorking ? 'Working!' : 'Not working'}
-        {currentStep === 1 && <Form1 onSuccess={() => setCurrentStep(2)}/>}
-        {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)}/>}
-        {currentStep === 3 && 'Success!'}
+        {isWorking ? <>
+          {currentStep === 1 && <Form1 onSuccess={() => {console.log(1);setCurrentStep(2)}} />}
+          {currentStep === 2 && <Form2 onSuccess={() => setCurrentStep(3)} />}
+          {currentStep === 3 && 'Success!'}
+        </>
+          : 'Not working'
+        }
       </Box>
     </>
   )

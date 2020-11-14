@@ -619,7 +619,7 @@ transition: 2s;
 .field-wrapper {
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 100%;
   height: 30px;
   margin-bottom: 3px;
   position: relative;
@@ -637,4 +637,20 @@ transition: 2s;
   position: absolute;
   left: -5px;
   bottom: -7px;
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+
+.field-error.field-error--shown {
+  opacity: 1;
+}
+
+.form1-button {
+  margin-left: auto;
+  margin-right: 20px;
+  display: block;
+  background: transparent;
+  border: 1px solid blue;
+  border-radius: 4px;
+  padding: 5px 10px;
 }

@@ -8,9 +8,11 @@ export const Form1 = ({
     const [mask1, setMask1] = useState(createField())
     const [ip2, setIp2] = useState(createField())
     const [mask2, setMask2] = useState(createField())
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const onSubmit = (e) => {
         e.preventDefault()
+        if (isSubmitting) return
         let errIp1 = null, errIp2 = null, errMask1 = null, errMask2 = null
         if (!IPRgx.test(ip1.value)) {
             errIp1 = 'Format'
@@ -48,8 +50,8 @@ export const Form1 = ({
         setMask2({ ...mask2, error: errMask2 })
 
         if (!errIp1 && !errIp2 && !errMask1 && !errMask2) {
-            alert('Success')
-            onSuccess()
+            setIsSubmitting(true)
+            setTimeout(onSuccess, 300)
         }
     }
 
@@ -63,7 +65,7 @@ export const Form1 = ({
                 <Field label="IP адрес" field={ip2} setField={setIp2} />
                 <Field label="Маска подсети" field={mask2} setField={setMask2} />
             </FormWrapper>
-            <button>Сохранить</button>
+            <button class="form1-button">Сохранить</button>
         </form>
     )
 }

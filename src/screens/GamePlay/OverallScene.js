@@ -41,7 +41,6 @@ export default class OverallScene extends React.Component {
   }
 
   containerRef = (el) => {
-    console.log(el)
     el.scrollTo((lay.window.height - window.innerWidth) / 4, 0)
   }
 
@@ -58,9 +57,9 @@ export default class OverallScene extends React.Component {
   })
 
   closeAll = () => new Promise((resolve, reject) => {
-    this.setState({ scenes: { cloakroom: false } })
+    this.setState({ scenes: { cloakroom: false }, overlayLoading: true })
     setTimeout(() => {
-      this.setState({ overlay: false })
+      this.setState({ overlay: false, overlayLoading: false })
       resolve()
     }, Animations.duration)
   })
