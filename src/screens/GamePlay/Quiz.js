@@ -4,7 +4,7 @@ import cn from "classnames"
 export const Quiz = ({
     questions,
     step,
-    changeStep,
+    onStepComplete,
     onFinish
 }) => {
     const question = questions[step]
@@ -20,7 +20,7 @@ export const Quiz = ({
             }
         })
         if (step < questions.length - 1) {
-            setTimeout(() => changeStep(step + 1), 1000)
+            setTimeout(() => onStepComplete(step, num, isRight), 1000)
         } else {
             setTimeout(() => onFinish(), 1000)
         }

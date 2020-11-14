@@ -22,7 +22,7 @@ export default class OverallScene extends React.Component {
     super(props)
     this.state = {
       // isStart: true,
-      isStart: true,
+      isStart: false,
       overlay: false,
       // overlay: true,
       overlayLoading: false,
@@ -55,7 +55,9 @@ export default class OverallScene extends React.Component {
   }
 
   containerRef = (el) => {
-    el.scrollTo((lay.window.height - window.innerWidth) / 2, 0)
+    if (el) {
+      el.scrollTo((lay.window.height - window.innerWidth) / 2, 0)
+    }
   }
 
   endStart=()=>{
@@ -175,6 +177,7 @@ export default class OverallScene extends React.Component {
               onValid1={() => this.setState({ onValidBrmz1: true})}
               onValid2={() => this.setState({ onValidBrmz2: true })}
               onGoose={this.onGoose}
+              onQuizStepComplete={(step, num, isRight) => console.log(step, num, isRight)}
             />
           }
           <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />
