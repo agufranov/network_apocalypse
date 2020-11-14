@@ -665,12 +665,19 @@ transition: 2s;
   opacity: 1;
 }
 
-.form1-button {
-  margin-left: auto;
-  margin-right: 20px;
-  display: block;
-  background: transparent;
+button {
+  background: rgba(200, 186, 214, 0.4);
+  padding: 5px 10px;
   border: 1px solid blue;
   border-radius: 4px;
-  padding: 5px 10px;
+  display: block;
+}
+
+.form1 button {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.form2 button {
+  margin-left: auto;
 }

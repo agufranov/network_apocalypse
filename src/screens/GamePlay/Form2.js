@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Field, FormWrapper, IPRgx, createField } from "./Forms"
+import { Field, FormWrapper, IPRgx, MACRgx, createField, errorMsg } from "./Forms"
 import { pipe, set, lensProp, lensPath } from 'ramda'
 
 const fields = [
-    { label: 'MAC', key: 'mac' },
-    // { label: 'Goose ID', key: 'gooseId' },
+    { label: 'Имя GCB', key: 'gcb' },
+    { label: 'GOOSE ID', key: 'gooseId' },
+    { label: 'MAC адрес', key: 'mac' },
+    { label: 'APP ID', key: 'appId' },
+    { label: 'VLAN ID', key: 'vlanId' },
+    { label: 'Min Time', key: 'minTime' },
+    { label: 'Max Time', key: 'maxTime' },
 ]
 
 export const ComplexForm = ({
@@ -28,17 +33,46 @@ export const ComplexForm = ({
             }
         }), {})
 
-        if (!IPRgx.test(data.mac.value)) {
-            errors.mac.value = 'MAC-адрес должен иметь верный формат!'
-        } else if (otherData.mac.value && otherData.mac.value === data.mac.value) {
-            errors.mac.value = 'MAC-адреса двух устройств должны различаться!'
+        if (!data.gcb.value.trim()) {
+            errors.gcb.value = errorMsg.cantBeEmpty('Имя GCB')
+        } else if (/^\d/.test(data.gcb.value.trim())) {
+            errors.gcb.value = errorMsg.cantStartWithDigit('Имя GCB')
         }
 
-        // if (!IPRgx.test(data.gooseId.value)) {
-        //     errors.gooseId.value = 'Format'
-        // } else if (otherData.gooseId.value && otherData.gooseId.value !== data.gooseId.value) {
-        //     errors.gooseId.value = 'Not equal'
-        // }
+        if (!data.gooseId.value) {
+            errors.gooseId.value = errorMsg.cantBeEmpty('GOOSE ID')
+        } else if (otherData.gooseId.value && otherData.gooseId.value !== data.gooseId.value) {
+            errors.gooseId.value = errorMsg.shouldBeEqual('GOOSE ID')
+        }
+
+        if (!MACRgx.test(data.mac.value)) {
+            errors.mac.value = errorMsg.shouldHaveFormat('MAC-адрес')
+        } else if (otherData.mac.value && otherData.mac.value === data.mac.value) {
+            errors.mac.value = errorMsg.shouldDiffer('MAC-адрес')
+        }
+
+        if (!/[0-9A-Fa-f]{4}/.test(data.appId.value)) {
+            errors.appId.value = 'AppID должен иметь шестнадцатеричный формат!'
+        } else {
+            const appIdValue = parseInt(data.appId.value, 16)
+            if (parseInt('8000', 16) > appIdValue || appIdValue > parseInt('BFFF', 16)) {
+                errors.appId.value = 'AppID должен лежать в диапазоне 8000-BFFF!'
+            }
+        }
+
+        if (!data.vlanId.value) {
+            errors.vlanId.value = errorMsg.cantBeEmpty('VLAN ID')
+        } else if (otherData.vlanId.value && otherData.vlanId.value !== data.vlanId.value) {
+            errors.vlanId.value = errorMsg.shouldBeEqual('VLAN ID')
+        }
+
+        if (data.minTime.value !== '4') {
+            errors.minTime.value = 'Min Time должно иметь значение 4 мс!'
+        }
+
+        if (data.maxTime.value !== '1000') {
+            errors.maxTime.value = 'Max Time должно иметь значение 1000 мс!'
+        }
 
         setData(
             pipe(
@@ -51,7 +85,7 @@ export const ComplexForm = ({
 
     return (
         <FormWrapper>
-            <form onSubmit={onSubmit}>
+            <form class="form2" onSubmit={onSubmit}>
                 {
                     fields.map(({ label, key }) =>
                         <Field
@@ -62,17 +96,13 @@ export const ComplexForm = ({
                         />
                     )
                 }
-                <button>Submit</button>
-                <button type="button" onClick={onClose}>Close</button>
+                <button>Сохранить</button>
             </form>
         </FormWrapper >
     )
 }
 
-const createData = () => ({
-    mac: createField(),
-    gooseId: createField()
-})
+const createData = () => fields.reduce((o, { key }) => ({ ...o, [key]: createField() }), {})
 
 export const Form2 = ({
     onSuccess
@@ -83,6 +113,7 @@ export const Form2 = ({
     const [isValid1, setIsValid1] = useState(false)
     const [isValid2, setIsValid2] = useState(false)
     const onValidate = (isValid, num) => {
+        if (isValid) setTimeout(() => setState(0), 300)
         if (num === 1) setIsValid1(isValid)
         if (num === 2) setIsValid2(isValid)
     }
@@ -91,8 +122,8 @@ export const Form2 = ({
     }, [isValid1, isValid2])
     return (
         <div>
-            <button onClick={() => setState(1)}>Устройство 1 ({isValid1 ? 'Valid!' : 'Not Valid'})</button>
-            <button onClick={() => setState(2)}>Устройство 2 ({isValid2 ? 'Valid!' : 'Not Valid'})</button>
+            <button style={{ background: isValid1 ? 'green' : 'grey' }} onClick={() => setState(1)}>Устройство 1 ({isValid1 ? 'Valid!' : 'Not Valid'})</button>
+            <button style={{ background: isValid2 ? 'green' : 'grey' }} onClick={() => setState(2)}>Устройство 2 ({isValid2 ? 'Valid!' : 'Not Valid'})</button>
             {state === 1 && (
                 <ComplexForm
                     data={data1}
