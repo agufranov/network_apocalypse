@@ -202,7 +202,7 @@ export const Form2 = ({
     onValid1,
     onValid2
 }) => {
-    const [state, setState] = useState(2)
+    const [state, setState] = useState(0)
     const [data1, setData1] = useState(createData())
     const [data2, setData2] = useState(createData())
     const [isValid1, setIsValid1] = useState(false)

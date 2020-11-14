@@ -20,32 +20,32 @@ export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      // isStart: true,
-      isStart: false,
-      // overlay: false,
-      overlay: true,
+      isStart: true,
+      // isStart: false,
+      overlay: false,
+      // overlay: true,
       overlayLoading: false,
       scenes: {
         cloakroom: false,
-        // notebook: false,
-        notebook: true,
-        //  commutator: false
-        commutator: true
+        notebook: false,
+        // notebook: true,
+         commutator: false
+        // commutator: true
+      },
+      selectedDresses: {
+        hat: false,
+        shoes: false,
+        pants: false,
       },
       // selectedDresses: {
-      //   hat: false,
-      //   shoes: false,
-      //   pants: false,
+      //   hat: true,
+      //   shoes: true,
+      //   pants: true,
       // },
-      selectedDresses: {
-        hat: true,
-        shoes: true,
-        pants: true,
-      },
-      // isNotebookOnceOpened: false,
-      isNotebookOnceOpened: true,
-      // isCommutatorActivated: false,
-      isCommutatorActivated: true,
+      isNotebookOnceOpened: false,
+      // isNotebookOnceOpened: true,
+      isCommutatorActivated: false,
+      // isCommutatorActivated: true,
       onIPsCorrect: false,
     }
   }

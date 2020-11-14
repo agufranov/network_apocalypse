@@ -18,7 +18,7 @@ const Notebook = ({
   onValid1,
   onValid2
 }) => {
-  const [currentStep, setCurrentStep] = useState(2)
+  const [currentStep, setCurrentStep] = useState(1)
   const [quizStep, setQuizStep] = useState(0)
   return (
     <>
