@@ -153,17 +153,17 @@ const Checks = ({
             <tbody>
                 <tr>
                     <td></td>
-                    <td colspan="3" align="center">Выходы IED 2</td>
+                    <td colSpan="3" align="center">Выходы IED 2</td>
                 </tr>
                 <tr>
                     <td>Выходы IED 1</td>
-                    {[0, 1, 2].map(i => <td>Выход {i + 1}</td>)}
+                    {[0, 1, 2].map(i => <td key={i}>Выход {i + 1}</td>)}
                 </tr>
                 {[0, 1, 2].map(i => (
                     <tr>
                         <td>Выход {i + 1}</td>
                         {[0, 1, 2].map(j => (
-                            <td>
+                            <td key={j}>
                                 <input type="checkbox" onChange={(e) => check1(e, i, j)} />
                             </td>
                         ))}
@@ -175,17 +175,17 @@ const Checks = ({
             <tbody>
                 <tr>
                     <td></td>
-                    <td colspan="3" align="center">Выходы IED 1</td>
+                    <td colSpan="3" align="center">Выходы IED 1</td>
                 </tr>
                 <tr>
                     <td>Выходы IED 2</td>
-                    {[0, 1, 2].map(i => <td>Выход {i + 1}</td>)}
+                    {[0, 1, 2].map(i => <td key={i}>Выход {i + 1}</td>)}
                 </tr>
                 {[0, 1, 2].map(i => (
                     <tr>
                         <td>Выход {i + 1}</td>
                         {[0, 1, 2].map(j => (
-                            <td>
+                            <td key={j}>
                                 <input type="checkbox" onChange={(e) => check2(e, i, j)} />
                             </td>
                         ))}

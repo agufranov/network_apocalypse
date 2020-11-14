@@ -13,6 +13,7 @@ import { over, inc, lensProp } from 'ramda'
 import Lan1SVG from "../../assets/images/Lan1SVG"
 import Lan2SVG from "../../assets/images/Lan2SVG"
 import BRMZSVG from "../../assets/images/BRMZSVG"
+import GooseSVG from "../../assets/images/GooseSVG"
 
 const ALL_DRESSES = ['hat', 'shoes', 'pants']
 
@@ -20,8 +21,8 @@ export default class OverallScene extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isStart: true,
-      // isStart: false,
+      // isStart: true,
+      isStart: false,
       overlay: false,
       // overlay: true,
       overlayLoading: false,
@@ -46,7 +47,10 @@ export default class OverallScene extends React.Component {
       // isNotebookOnceOpened: true,
       isCommutatorActivated: false,
       // isCommutatorActivated: true,
-      onIPsCorrect: false,
+      // onIPsCorrect: true,
+      // onValidBrmz1: true,
+      // onValidBrmz2: true,
+      // goose: false
     }
   }
 
@@ -111,6 +115,11 @@ export default class OverallScene extends React.Component {
 
   isDressed = () => ALL_DRESSES.every(dress => this.state.selectedDresses[dress])
 
+  onGoose = () => {
+    this.setState({ goose: true })
+    setTimeout(() => this.setState({ goose: false }), 2300)
+  }
+
   render() {
     const {
       scenes,
@@ -138,7 +147,8 @@ export default class OverallScene extends React.Component {
               width: lay.window.height,
               flex: "0 0 " + lay.window.height + "px",
               alignSelf: "center",
-              margin: "0 auto"
+              margin: "0 auto",
+              overflow: 'hidden'
              }}
         >
           <OveralSceneSVG
@@ -164,13 +174,15 @@ export default class OverallScene extends React.Component {
               onIPsCorrect={() => { this.setState({ onIPsCorrect: true})}}
               onValid1={() => this.setState({ onValidBrmz1: true})}
               onValid2={() => this.setState({ onValidBrmz2: true })}
+              onGoose={this.onGoose}
             />
           }
           <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />
           <Lan1SVG onIPsCorrect={onIPsCorrect} />
           <Lan2SVG onIPsCorrect={onIPsCorrect} />
           <BRMZSVG leftPosition={this.state.onValidBrmz1 ? '20%' : '-20%'} topPosition={this.state.onValidBrmz1 ? '10%' : '-10%'} />
-          <BRMZSVG leftPosition={this.state.onValidBrmz2 ? '70%': '120%'} topPosition={this.state.onValidBrmz2 ? '17%' : '-10%'} />
+          <BRMZSVG leftPosition={this.state.onValidBrmz2 ? '70%': '20%'} topPosition={this.state.onValidBrmz2 ? '17%' : '-10%'} />
+          <GooseSVG goose={this.state.goose} leftPosition={this.state.goose ? '20%': '70%'} topPosition={this.state.goose ? '10%' : '17%'} />
           <Overlay isOpen={overlay} isLoading={overlayLoading} onClose={this.closeAll} />
         </Main>
       </Container>
@@ -198,5 +210,3 @@ const Main = styled.div`
   justify-content: center;
   box-shadow: inset 0 0 20px 4px black;
 `;
-
-

@@ -16,7 +16,8 @@ const Notebook = ({
   selectedDresses,
   onIPsCorrect,
   onValid1,
-  onValid2
+  onValid2,
+  onGoose
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [quizStep, setQuizStep] = useState(0)
@@ -36,7 +37,10 @@ const Notebook = ({
               }
               {currentStep === 2 &&
                 <Form2
-                  onSuccess={() => setCurrentStep(3)}
+                  onSuccess={() => {
+                    onGoose()
+                    setCurrentStep(3)
+                  }}
                   onValid1={onValid1}
                   onValid2={onValid2}
                 />

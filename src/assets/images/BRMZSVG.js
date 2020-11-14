@@ -22,7 +22,7 @@ export default class BRMZSVG extends React.Component {
 
 			}}>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
-	 viewBox="0 0 1312 1102" enable-background="new 0 0 1312 1102" >
+	 viewBox="0 0 1312 1102" enable-background="new 0 0 1312 1102" onClick={this.props.onClick}>
 <g id="Слой_1">
 	<g>
 		<path fill="#D5DADE" stroke="#333333" stroke-width="4" stroke-miterlimit="10" d="M955.2,68.4c3,2.5,6.6,2,10,2.1
