@@ -177,6 +177,7 @@ export default class OverallScene extends React.Component {
               onValid1={() => this.setState({ onValidBrmz1: true})}
               onValid2={() => this.setState({ onValidBrmz2: true })}
               onGoose={this.onGoose}
+              onQuizStepComplete={(step, num, isRight) => console.log(step, num, isRight)}
             />
           }
           <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />

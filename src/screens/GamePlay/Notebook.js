@@ -17,10 +17,15 @@ const Notebook = ({
   onIPsCorrect,
   onValid1,
   onValid2,
-  onGoose
+  onGoose,
+  onQuizStepComplete
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [quizStep, setQuizStep] = useState(0)
+  const onStepComplete = (step, num, isRight) => {
+    onQuizStepComplete(step, num, isRight)
+    setQuizStep(quizStep + 1)
+  }
   return (
     <>
       {selectedDresses.hat && selectedDresses.shoes && selectedDresses.pants && <Button onClick={onOpen} />}
@@ -49,7 +54,7 @@ const Notebook = ({
                 <Quiz
                   questions={quizQuestions}
                   step={quizStep}
-                  changeStep={() => setQuizStep(quizStep + 1)}
+                  onStepComplete={onStepComplete}
                   onFinish={() => alert('Finish')}
                 />
               }
