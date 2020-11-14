@@ -811,3 +811,21 @@ input[type=checkbox] {
   margin-bottom: 30px;
   padding: 14px;
 }
+
+.levels .item {
+  width: 200px;
+  height: 200px;
+  background: #606060;
+  margin: 50px;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+.levels .item:hover {
+  opacity: 1;
+}
+
+.levels .item img {
+  width: 100%;
+}

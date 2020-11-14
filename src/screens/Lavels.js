@@ -13,8 +13,29 @@ export default class Lavels extends React.Component {
     return (
       <Container
         style={{ backgroundColor: themes.dark.allBackground }}
+        className="levels"
       >
-
+        <h1 style={{ color: 'whote', marginTop: 50 }}>Выбор уровня</h1>
+        <div style={{ display: 'flex', flexWrap: 'wrap', margin: '0 100px' }}>
+          <div className="item" onClick={this.props.onSelect}>
+            <img src="level.png" />
+          </div>
+          <div className="item">
+            <img src="lock.png" />
+          </div>
+          <div className="item">
+            <img src="lock.png" />
+          </div>
+          <div className="item">
+            <img src="lock.png" />
+          </div>
+          <div className="item">
+            <img src="lock.png" />
+          </div>
+          <div className="item">
+            <img src="lock.png" />
+          </div>
+        </div>
       </Container>
     );
   }
