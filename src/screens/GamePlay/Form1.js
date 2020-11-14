@@ -1,43 +1,21 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
-
-const Field = ({ label, value, error, onChange }) => (
-    <div
-        style={{ display: 'flex', width: 300, marginBottom: 3 }}
-    >
-        <label style={{ flex: '1 1 50%' }}>{label}</label>
-        <input
-            style={{
-                flex: '1 1 50%',
-                borderWidth: 1,
-                borderStyle: 'solid',
-                borderColor: error ? 'red' : 'grey',
-                borderRadius: 3
-            }}
-            value={value}
-            onChange={onChange}
-        />
-        {error}
-    </div>
-)
-
-const ipRgx = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+import { Field, FormWrapper, IPRgx, createField } from "./Forms";
 
 export const Form1 = ({
     onSuccess
 }) => {
-    const [ip1, setIp1] = useState({ value: '', error: null })
-    const [mask1, setMask1] = useState({ value: '', error: null })
-    const [ip2, setIp2] = useState({ value: '', error: null })
-    const [mask2, setMask2] = useState({ value: '', error: null })
+    const [ip1, setIp1] = useState(createField())
+    const [mask1, setMask1] = useState(createField())
+    const [ip2, setIp2] = useState(createField())
+    const [mask2, setMask2] = useState(createField())
 
     const onSubmit = (e) => {
         e.preventDefault()
         let errIp1 = null, errIp2 = null, errMask1 = null, errMask2 = null
-        if (!ipRgx.test(ip1.value)) {
+        if (!IPRgx.test(ip1.value)) {
             errIp1 = 'Format'
         }
-        if (!ipRgx.test(ip2.value)) {
+        if (!IPRgx.test(ip2.value)) {
             errIp2 = 'Format'
         }
         if (!errIp1 && !errIp2) {
@@ -52,10 +30,10 @@ export const Form1 = ({
             }
         }
 
-        if (!ipRgx.test(mask1.value)) {
+        if (!IPRgx.test(mask1.value)) {
             errMask1 = 'Format'
         }
-        if (!ipRgx.test(mask2.value)) {
+        if (!IPRgx.test(mask2.value)) {
             errMask2 = 'Format'
         }
         if (!errMask1 && !errMask2) {
@@ -78,20 +56,14 @@ export const Form1 = ({
     return (
         <form onSubmit={onSubmit}>
             <FormWrapper>
-                <Field label="IP адрес" value={ip1.value} error={ip1.error} onChange={e => setIp1({ value: e.target.value, error: null })} />
-                <Field label="Маска подсети" value={mask1.value} error={mask1.error} onChange={e => setMask1({ value: e.target.value, error: null })} />
+                <Field label="IP адрес" field={ip1} setField={setIp1} />
+                <Field label="Маска подсети" field={mask1} setField={setMask1} />
             </FormWrapper>
             <FormWrapper>
-                <Field label="IP адрес" value={ip2.value} error={ip2.error} onChange={e => setIp2({ value: e.target.value, error: null })} />
-                <Field label="Маска подсети" value={mask2.value} error={mask2.error} onChange={e => setMask2({ value: e.target.value, error: null })} />
+                <Field label="IP адрес" field={ip2} setField={setIp2} />
+                <Field label="Маска подсети" field={mask2} setField={setMask2} />
             </FormWrapper>
             <button>Сохранить</button>
         </form>
     )
 }
-
-const FormWrapper = styled.div`
-    padding: 20px;
-    border: 1px solid grey;
-    margin-bottom: 10px;
-`

@@ -1,95 +1,99 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import { Field, FormWrapper, IPRgx, createField } from "./Forms"
+import { pipe, set, lensProp, lensPath } from 'ramda'
 
-const Field = ({ label, value, error, onChange }) => (
-    <div
-        style={{ display: 'flex', width: 300, marginBottom: 3 }}
-    >
-        <label style={{ flex: '1 1 50%' }}>{label}</label>
-        <input
-            style={{
-                flex: '1 1 50%',
-                borderWidth: 1,
-                borderStyle: 'solid',
-                borderColor: error ? 'red' : 'grey',
-                borderRadius: 3
-            }}
-            value={value}
-            onChange={onChange}
-        />
-        {error}
-    </div>
-)
+const fields = [
+    { label: 'MAC', key: 'mac' },
+    { label: 'Goose ID', key: 'gooseId' }
+]
 
-const ipRgx = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
-
-export const Form2 = ({
-    onSuccess
+export const ComplexForm = ({
+    data,
+    setData,
+    otherData
 }) => {
-    const [ip1, setIp1] = useState({ value: '', error: null })
-    const [mask1, setMask1] = useState({ value: '', error: null })
-    const [ip2, setIp2] = useState({ value: '', error: null })
-    const [mask2, setMask2] = useState({ value: '', error: null })
-
     const onSubmit = (e) => {
         e.preventDefault()
-        let errIp1 = null, errIp2 = null, errMask1 = null, errMask2 = null
-        if (!ipRgx.test(ip1.value)) {
-            errIp1 = 'Format'
-        }
-        if (!ipRgx.test(ip2.value)) {
-            errIp2 = 'Format'
-        }
-        if (!errIp1 && !errIp2) {
-            if (ip1.value === ip2.value) {
-                errIp1 = errIp2 = 'Duplicate'
-            } else {
-                const [a1, b1, c1] = ip1.value.split('.')
-                const [a2, b2, c2] = ip2.value.split('.')
-                if (a1 !== a1 || b1 !== b2 || c1 !== c2) {
-                    errIp1 = errIp2 = 'Not in one network'
-                }
+        validate()
+    }
+
+    const validate = () => {
+        const errors = fields.reduce((errors, { key }) => ({
+            ...errors,
+            [key]: {
+                value: null,
+                lens: lensPath([key, 'error'])
             }
+        }), {})
+
+        if (!IPRgx.test(data.mac.value)) {
+            errors.mac.value = 'Format'
+        } else if (otherData.mac.value && otherData.mac.value === data.mac.value){
+            errors.mac.value = 'Duplicate'
         }
 
-        if (!ipRgx.test(mask1.value)) {
-            errMask1 = 'Format'
-        }
-        if (!ipRgx.test(mask2.value)) {
-            errMask2 = 'Format'
-        }
-        if (!errMask1 && !errMask2) {
-            if (mask1.value !== mask2.value) {
-                errMask1 = errMask2 = 'Not equal'
-            }
+        if (!IPRgx.test(data.gooseId.value)) {
+            errors.gooseId.value = 'Format'
+        } else if (otherData.gooseId.value && otherData.gooseId.value !== data.gooseId.value){
+            errors.gooseId.value = 'Not equal'
         }
 
-        setIp1({ ...ip1, error: errIp1 })
-        setIp2({ ...ip2, error: errIp2 })
-        setMask1({ ...mask1, error: errMask1 })
-        setMask2({ ...mask2, error: errMask2 })
+        console.log(errors)
 
-        if (!errIp1 && !errIp2 && !errMask1 && !errMask2) {
-            alert('Success')
-            onSuccess()
-        }
+        setData(
+            pipe(
+                ...fields.map(({ key }) => set(errors[key].lens, errors[key].value))
+            )(data)
+        )
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <FormWrapper>
-                <Field label="IP адрес" value={ip1.value} error={ip1.error} onChange={e => setIp1({ value: e.target.value, error: null })} />
-            </FormWrapper>
-            <FormWrapper>
-                <Field label="IP адрес" value={ip2.value} error={ip2.error} onChange={e => setIp2({ value: e.target.value, error: null })} />
-            </FormWrapper>
-            <button>Сохранить</button>
-        </form>
+        <FormWrapper>
+            <form onSubmit={onSubmit}>
+                {
+                    fields.map(({ label, key }) =>
+                        <Field
+                            key={key}
+                            label={label}
+                            field={data[key]}
+                            setField={value => setData(set(lensProp(key), value, data))}
+                        />
+                    )
+                }
+                <button>Submit</button>
+            </form>
+        </FormWrapper >
     )
 }
 
-const FormWrapper = styled.div`
-    padding: 20px;
-    border: 1px solid grey;
-    margin-bottom: 10px;
-`
+const createData = () => ({
+    mac: createField(),
+    gooseId: createField()
+})
+
+export const Form2 = ({
+}) => {
+    const [state, setState] = useState(1)
+    const [data1, setData1] = useState(createData())
+    const [data2, setData2] = useState(createData())
+    return (
+        <div>
+            <button onClick={() => setState(1)}>Edit 1</button>
+            <button onClick={() => setState(2)}>Edit 2</button>
+            {state === 1 && (
+                <>
+                    <ComplexForm
+                        data={data1}
+                        setData={setData1}
+                        otherData={data2}
+                    />
+                    <ComplexForm
+                        data={data2}
+                        setData={setData2}
+                        otherData={data1}
+                    />
+                </>
+            )}
+        </div >
+    )
+}

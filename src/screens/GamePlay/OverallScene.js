@@ -19,6 +19,7 @@ export default class OverallScene extends React.Component {
       isStart: false,
       // overlay: false,
       overlay: true,
+      overlayLoading: false,
       scenes: {
         cloakroom: false,
         // notebook: false,
@@ -49,8 +50,11 @@ export default class OverallScene extends React.Component {
   }
 
   toggleOverlay = (isOpened) => new Promise((resolve, reject) => {
-    this.setState({ overlay: isOpened })
-    setTimeout(resolve, Animations.duration)
+    this.setState({ overlay: isOpened, overlayLoading: true })
+    setTimeout(() => {
+      this.setState({ overlayLoading: false })
+      resolve()
+    }, Animations.duration)
   })
 
   closeAll = () => new Promise((resolve, reject) => {
@@ -102,6 +106,7 @@ export default class OverallScene extends React.Component {
     const {
       scenes,
       overlay,
+      overlayLoading,
       selectedDresses,
       isCommutatorActivated,
       isStart
@@ -143,7 +148,7 @@ export default class OverallScene extends React.Component {
             />
           }
           <Commutator isOpen={scenes.commutator} />
-          <Overlay isOpen={overlay} onClose={this.closeAll} />
+          <Overlay isOpen={overlay} isLoading={overlayLoading} onClose={this.closeAll} />
         </Main>
       </Container>
     );
