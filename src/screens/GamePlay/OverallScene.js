@@ -12,6 +12,7 @@ import {lay} from "../../constants/Layout"
 import { over, inc, lensProp } from 'ramda'
 import Lan1SVG from "../../assets/images/Lan1SVG"
 import Lan2SVG from "../../assets/images/Lan2SVG"
+import BRMZSVG from "../../assets/images/BRMZSVG"
 
 const ALL_DRESSES = ['hat', 'shoes', 'pants']
 
@@ -161,13 +162,15 @@ export default class OverallScene extends React.Component {
               isWorking={isCommutatorActivated}
               selectedDresses={selectedDresses}
               onIPsCorrect={() => { this.setState({ onIPsCorrect: true})}}
-              onValid1={() => alert('1 valid')}
-              onValid2={() => alert('2 valid')}
+              onValid1={() => this.setState({ onValidBrmz1: true})}
+              onValid2={() => this.setState({ onValidBrmz2: true })}
             />
           }
           <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />
           <Lan1SVG onIPsCorrect={onIPsCorrect} />
           <Lan2SVG onIPsCorrect={onIPsCorrect} />
+          <BRMZSVG leftPosition={this.state.onValidBrmz1 ? '20%' : '-20%'} topPosition={this.state.onValidBrmz1 ? '10%' : '-10%'} />
+          <BRMZSVG leftPosition={this.state.onValidBrmz2 ? '70%': '120%'} topPosition={this.state.onValidBrmz2 ? '17%' : '-10%'} />
           <Overlay isOpen={overlay} isLoading={overlayLoading} onClose={this.closeAll} />
         </Main>
       </Container>
