@@ -9,6 +9,7 @@ const Cloakroom = ({
   onDressToggle,
   selectedDresses,
   onCommutatorClick,
+  onCableClick,
   isNotebookOnceOpened,
 }) => {
   return (
@@ -22,9 +23,10 @@ const Cloakroom = ({
         })}
         
           <Commutator droppableId={"1"}
+             onClick={onCommutatorClick}
              onDragEnter={onCommutatorClick}
           />
-          <CableSVG/>
+          <CableSVG onClick={onCableClick} />
       </Box>
     </>
   )

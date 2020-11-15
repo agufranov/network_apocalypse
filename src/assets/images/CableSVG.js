@@ -12,14 +12,16 @@ export default class CableSVG extends React.Component {
 
 		//let noteBookXY = (this.props.selectedDresses.hat && this.props.selectedDresses.shoes) ? 'M764.7,2694.8' : 'M864.7,2994.8'
 		return (   
-			<div style={{
-				position: 'absolute',
-				height: '20%',
-				width: '45%',
-				right: '5%',
-				bottom: '10%',
-				cursor: "pointer"
-			}}
+			<div
+				style={{
+					position: 'absolute',
+					height: '20%',
+					width: '45%',
+					right: '5%',
+					bottom: '10%',
+					cursor: "pointer"
+				}}
+				onClick={this.props.onClick}
 				draggableId={"1"} draggable="true" 
 			>
 				<svg version="1.1" id="Слой_1"

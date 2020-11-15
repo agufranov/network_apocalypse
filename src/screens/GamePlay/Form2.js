@@ -225,8 +225,8 @@ export const Form2 = ({
     }, [isValid1, isValid2])
     return (
         <div className="form2">
-            {state === 0 && <div className="form2-device" style={{ background: isValid1 ? 'green' : 'grey' }} onClick={() => setState(1)}>Устройство 1 ({isValid1 ? 'Valid!' : 'Not Valid'})</div>}
-            {state === 0 && <div className="form2-device form2-device--2" style={{ background: isValid2 ? 'green' : 'grey' }} onClick={() => setState(2)}>Устройство 2 ({isValid2 ? 'Valid!' : 'Not Valid'})</div>}
+            {state === 0 && <div className="form2-device" style={{ background: isValid1 ? 'green' : 'grey' }} onClick={() => setState(1)}>Устройство 1</div>}
+            {state === 0 && <div className="form2-device form2-device--2" style={{ background: isValid2 ? 'green' : 'grey' }} onClick={() => setState(2)}>Устройство 2</div>}
             {state === 0 && connected && <button className="form2-connect-button" onClick={() => setState(3)}>Подписки GOOSE-сообщений</button>}
             {state === 0 && checked && <button className="form2-send-button" onClick={() => setState(4)}>Отправить GOOSE</button>}
             {state === 1 && (

@@ -48,6 +48,7 @@ export default class OverallScene extends React.Component {
       // isNotebookOnceOpened: true,
       isCommutatorActivated: false,
       // isCommutatorActivated: true,
+      // isCableClicked: true,
       // onIPsCorrect: true,
       // onValidBrmz1: true,
       // onValidBrmz2: true,
@@ -99,7 +100,7 @@ export default class OverallScene extends React.Component {
   openNotebook = () => {
     this.openScene('notebook')
     this.setState({ isNotebookOnceOpened: true })
-    if (this.state.isCommutatorActivated) {
+    if (this.state.isCommutatorActivated && this.state.isCableClicked) {
       this.openScene('commutator')
     }
   }
@@ -107,8 +108,23 @@ export default class OverallScene extends React.Component {
   onCommutatorClick = async () => {
     if (this.isDressed() && this.state.isNotebookOnceOpened) {
       this.setState({ isCommutatorActivated: true })
-      await this.closeAll()
-      this.openNotebook()
+      if (this.state.isCableClicked) {
+        console.log(1)
+        await this.closeAll()
+        this.openNotebook()
+      }
+    }
+  }
+
+  onCableClick = async () => {
+    console.log(3)
+    if (this.isDressed() && this.state.isNotebookOnceOpened) {
+      this.setState({ isCableClicked: true })
+      if (this.state.isCommutatorActivated) {
+        console.log(2)
+        await this.closeAll()
+        this.openNotebook()
+      }
     }
   }
 
@@ -135,6 +151,7 @@ export default class OverallScene extends React.Component {
       overlayLoading,
       selectedDresses,
       isCommutatorActivated,
+      isCableClicked,
       isNotebookOnceOpened,
       isStart,
       onIPsCorrect,
@@ -175,14 +192,14 @@ export default class OverallScene extends React.Component {
             onDressToggle={this.toggleDress}
             selectedDresses={selectedDresses}
             onCommutatorClick={this.onCommutatorClick}
+            onCableClick={this.onCableClick}
             isNotebookOnceOpened={isNotebookOnceOpened}
-            isCommutatorActivated={isCommutatorActivated}
           />
           {this.isDressed() &&
             <Notebook
               isOpen={scenes.notebook}
               onOpen={this.openNotebook}
-              isWorking={isCommutatorActivated}
+              isWorking={isCommutatorActivated && isCableClicked}
               selectedDresses={selectedDresses}
               onIPsCorrect={() => { this.setState({ onIPsCorrect: true})}}
               onValid1={() => this.setState({ onValidBrmz1: true})}
