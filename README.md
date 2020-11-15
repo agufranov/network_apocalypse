@@ -1,26 +1,12 @@
-This project was created with [BuilderX](https://builderx.io/).
+## Демо
+Демонстрационная версия приложения развернута [здесь](https://aponet.businessmod.ru).
 
-## BuilderX uses third party libraries for some of the react components such as
+## Запуск проекта
+Чтобы развернуть и запустить приложение на локальной машине, необходимо наличие Node.js.
 
-```
-@material-ui/core@4.2.1
-google-map-react@1.1.4
-material-ui-slider@3.0.8
-react-router-dom@5.0.1
-styled-components@4.3.2
-react-native-vector-icons
-```
+_Скачать и установить Node.js можно [здесь](https://nodejs.org/en/download)._
 
-These packages are included as dependencies in package.json file.
-
-## Steps to run project
-
-In the project directory, you can run:
-
-### `yarn` or `npm install`
-
-This will add the dependencies required to run the project.
-
-### `yarn start` or `npm start`
-
-This will start the project.
+Для локального запуска откройте системную консоль в папке проекта и введите следующие команды:
+1. `npm install`
+2. `npm run start`
+3. Перейдите в браузере по адресу http://localhost:3000.
