@@ -13,7 +13,7 @@ export default class Lan1SVG extends React.Component {
 				position: 'absolute',
 				height: this.props.onIPsCorrect ? '7%' : 0 ,
 				width: '5%',
-				left: '35%',
+				left: '37.5%',
 				bottom: '2%',
 				cursor: 'pointer',
 				zIndex: 222,
