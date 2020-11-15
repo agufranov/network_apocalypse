@@ -9,7 +9,7 @@ function axi(url, method, params) {
                     'charset': 'utf-8',
                     'Access-Control-Allow-Headers': '*',
                     'ReferrerPolicy': "unsafe-url"},
-                url: 'https://fridgebox.businessmod.ru/api/v1/' + url,
+                url: 'https://aponet.businessmod.ru/api/v1/' + url,
                 data: {
                     "jsonrpc": "2.0",
                     "id": 1,

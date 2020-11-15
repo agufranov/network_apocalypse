@@ -15,6 +15,7 @@ import Lan2SVG from "../../assets/images/Lan2SVG"
 import BRMZSVG from "../../assets/images/BRMZSVG"
 import GooseSVG from "../../assets/images/GooseSVG"
 import gas from "../../assets/images/gas.svg"
+import axi from "../../functions/axiosf"
 
 const ALL_DRESSES = ['hat', 'shoes', 'pants']
 
@@ -55,7 +56,8 @@ export default class OverallScene extends React.Component {
       // goose: false,
       kz: true,
       quizStepComplete: 0,
-      isFinish: false
+      test: [],
+      isFinish: false,
     }
   }
 
@@ -144,6 +146,16 @@ export default class OverallScene extends React.Component {
       }, 2300)
   }
 
+  axiSendResult=()=>{
+    axi("resultTest.php", null, { name: this.props.username, test: this.state.test }).then((result) => {
+      if (result.type == 'approved') {
+        //this.setState({ base: result.base })
+      } else {
+        //this.setState({ screen: 'LogIn' })
+      }
+    }, (e) => { console.log(e) })
+  }
+
   render() {
     const {
       scenes,
@@ -206,10 +218,14 @@ export default class OverallScene extends React.Component {
               onValid2={() => this.setState({ onValidBrmz2: true })}
               onGoose={this.onGoose}
               onQuizStepComplete={(step, num, isRight) => {
-                console.log(step, num, isRight)
-                this.setState({ quizStepComplete: step})
+                  console.log(step, num, isRight)
+                  let newTest = [ ...this.state.test, {"step": step, "num": num, "isRight": isRight}]
+                  this.setState({ "quizStepComplete": step, "test": newTest})
                 }}
-              onFinish={()=>{this.setState({isFinish: true})}}
+              onFinish={()=>{
+                this.setState({isFinish: true})
+                this.axiSendResult()
+                }}
             />
           }
           <Commutator isOpen={scenes.commutator} onIPsCorrect={onIPsCorrect} />
